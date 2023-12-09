@@ -14,14 +14,14 @@ public class SwordsMan extends Monster{
         this.life = 300;
         this.activeSkill = new Swords();
         this.monsterName = name;
-        this.types = Arrays.asList(Type.SWORD);
+        this.types = Arrays.asList(Type.SWORD, Type.ANTITANK, Type.FIGHTER);
     }
 
     public SwordsMan(String name, int basicDamage, int minAttacks, int maxAttacks) {
-        this.life = 100;
+        this.life = 300;
         this.activeSkill = new Swords(basicDamage, minAttacks, maxAttacks);
         this.monsterName = name;
-        this.types = Arrays.asList(Type.SWORD);
+        this.types = Arrays.asList(Type.SWORD, Type.ANTITANK, Type.FIGHTER);
     }
 
     @Override

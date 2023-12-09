@@ -14,8 +14,8 @@ public class Swords implements Attack{
 
     public Swords () {
         this.basicDamage = 100;
-        this.minAttacks = 3;
-        this.maxAttacks = 8;
+        this.minAttacks = 5;
+        this.maxAttacks = 12;
     }
 
     public Swords (int basicDamage, int minAttacks, int maxAttacks) {

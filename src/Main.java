@@ -19,6 +19,7 @@ public class Main {
                 new Spartan("Spartan 2"),
                 new Spartan("Spartan 3"),
                 new Spartan("Spartan 4"),
+                new SwordsMan("Samurai 1",200, 3, 8),
                 new Spartan("Spartan 5"),
                 new Spartan("Spartan 6"),
                 new Spartan("Spartan 7"),
@@ -40,9 +41,9 @@ public class Main {
                 new Spartan("Spartan B"),
                 new Tank("Tank A"),
                 new Tank("Tank B"),
-                new SwordsMan("Samurai A", 25, 8, 12),
+                new SwordsMan("Samurai A", 200, 3, 8),
                 new SwordsMan("Samurai B"),
-                new SwordsMan("Samurai C", 50, 5, 15));
+                new SwordsMan("Samurai C", 300, 1, 5));
 
         //TODO ordenar el listado de monstruos que recibe el jugador dos
         rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
