@@ -102,6 +102,10 @@ public class RumbleGame {
         }
         segundaEvaluacionUI.refresh();
         round++;
+        if(playerOne.getCastle().getCastleLife() <= 0 && playerTwo.getCastle().getCastleLife() <= 0) {
+            System.out.println("****         Empate !!!                         ****");
+            loopGame = false;
+        }
         if(playerOne.getCastle().getCastleLife() <= 0) {
             System.out.println("****         Ganador el Jugador Azul!!!         ****");
             loopGame = false;
