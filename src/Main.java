@@ -21,8 +21,10 @@ public class Main {
                 new Spartan("Spartan 2"),
                 new Spartan("Spartan 3"),
                 new Spartan("Spartan 4"),
+                new IceBeast("Ice Beast 2"),
                 new Spartan("Spartan 5"),
                 //new SwordsMan("Samurai 1",200, 3, 8),
+                new Tank("Gordo Mounstro"),
                 new Spartan("Spartan 6"),
                 new SwordsMan("Samurai 3"),
                 new Spartan("Spartan 9"),
@@ -34,7 +36,7 @@ public class Main {
                 new Spartan("Spartan 15"));
 
         //TODO ordenar el listado de monstruos que recibe el jugador uno
-        monstersOne = ordenarListaMonstruo(monstersOne, new OrdenadorPreferenciaDeTipo(Arrays.asList(Type.ANTITANK, Type.FIGHTER)));
+        monstersOne = ordenarListaMonstruo(monstersOne, new OrdenadorPreferenciaDeTipo(Arrays.asList(Type.ANTITANK, Type.FIGHTER, Type.BEAST)));
 
         rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
