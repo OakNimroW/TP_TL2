@@ -1,8 +1,7 @@
 package entregable.monstruos;
 
-import game.components.Monster;
-import game.monsters.Spartan;
 import game.types.Type;
+import game.components.Monster;
 
 import java.util.Arrays;
 
@@ -10,13 +9,13 @@ import entregable.ataques.Punch;
 
 public class Tank extends Monster{
 
-    // TODO Hacer que Tank se mueva ciclo por medio
+    // [LM] TODO Hacer que Tank se mueva ciclo por medio
 
     public Tank(String name) {
         this.life = 1800;
         this.activeSkill = new Punch();
         this.monsterName = name;
-        this.types = Arrays.asList(Type.BEAST, Type.TANK, game.types.Type.ANTITANK);
+        this.types = Arrays.asList(Type.BEAST, Type.TANK);
 
     }
 
@@ -33,7 +32,6 @@ public class Tank extends Monster{
         }
 
         this.life = this.life - damage;
-        //System.out.println("Life Aft: " + this.life);
         if(this.life < 0) {
             this.life = 0;
         }
