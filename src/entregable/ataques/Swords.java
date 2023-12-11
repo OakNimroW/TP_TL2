@@ -3,7 +3,6 @@ package entregable.ataques;
 import game.attacks.Attack;
 
 import game.components.Monster;
-import game.random.RandomGenerator;
 
 public class Swords implements Attack{
 
