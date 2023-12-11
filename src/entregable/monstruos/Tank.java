@@ -16,7 +16,7 @@ public class Tank extends Monster{
         this.life = 1800;
         this.activeSkill = new Punch();
         this.monsterName = name;
-        this.types = Arrays.asList(Type.BEAST, Type.TANK, Type.FIGHTER);
+        this.types = Arrays.asList(Type.BEAST, Type.TANK, game.types.Type.ANTITANK);
 
     }
 
@@ -27,20 +27,12 @@ public class Tank extends Monster{
     @Override
     public void onDamageReceive(Integer damage, Monster monster) {
         //System.out.println("[+] " + this + " esta siendo atacado por " + monster);
-        
-        int damageReceived = damage;
-        
-        if (monster.getTypes().contains(Type.ANTITANK)) {
-            damageReceived = damageReceived * 5;    
-        } else if (monster.getTypes().contains(Type.SWORD)) {
-            damageReceived = damageReceived / 3;
+
+        if (Math.random() > 0.95) {
+            damage = 0;
         }
 
-        //System.out.println("Damage: " + damage);
-        //System.out.println("DamageReceived: " + damageReceived);
-        //System.out.println("Life Bef: " + this.life);
-
-        this.life = this.life - damageReceived;
+        this.life = this.life - damage;
         //System.out.println("Life Aft: " + this.life);
         if(this.life < 0) {
             this.life = 0;
