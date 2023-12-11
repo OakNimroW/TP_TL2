@@ -1,7 +1,6 @@
 package entregable.ordenadores;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import game.components.Monster;

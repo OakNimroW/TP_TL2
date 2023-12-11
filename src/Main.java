@@ -42,6 +42,7 @@ public class Main {
 
         List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"),
                 new Spartan("Spartan B"),
+                new EvilBeast("EvilBeast arr >:O"),
                 new Tank("Tank B"),
                 new SwordsMan("Samurai A", 200, 3, 8),
                 new SwordsMan("Samurai B"),
