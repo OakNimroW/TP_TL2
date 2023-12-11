@@ -12,9 +12,9 @@ Los puntos del código que debe modificarse en el proyecto JAVA están marcados 
 En la versión original, el orden de salida de los monstruos está dado por el orden de la lista: el primero de la lista es el primero en salir a la batalla.
 
 Los grupos de 2 y 3 integrantes deben implementar al menos: 2 criterios de ordenamiento para la lista de monstruos
-- [+] por vida (el que más vida tiene sale primero a la batalla)
-- [+] Por Nombre
-- [+] Por tipo
+[+] por vida (el que más vida tiene sale primero a la batalla)
+[+] Por Nombre
+[+] Por tipo
 
 [-] por ataque (el que más poder de daño tiene sale primero) o por tipo.
 
