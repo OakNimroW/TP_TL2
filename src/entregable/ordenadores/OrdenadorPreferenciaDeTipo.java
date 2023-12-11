@@ -15,6 +15,14 @@ public class OrdenadorPreferenciaDeTipo implements Ordenador{
         this.tiposPreferidos = tiposPreferidos;
     }
 
+    public void setTiposPreferidos (List<Type> tiposPreferidos) {
+        this.tiposPreferidos = tiposPreferidos;
+    }
+
+    public List<Type> getTiposPreferidos () {
+        return this.tiposPreferidos;
+    }
+
     public List<Monster> ordenar(List<Monster> listMonsters) {
         
         List<Monster> listaMountrosCopia = new ArrayList<Monster>();
