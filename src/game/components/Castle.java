@@ -15,23 +15,21 @@ public class Castle {
     }
 
     public void nextRound(Long playerId, Iterator<Monster> monsterIterator) {
-        if(!westPath.haveMonster(playerId)) {
-            if(monsterIterator.hasNext()) {
+        if (!westPath.haveMonster(playerId)) {
+            if (monsterIterator.hasNext()) {
                 westPath.releaseMonster(playerId, monsterIterator.next());
             }
         } else {
             westPath.nextRound(playerId, this);
         }
 
-        if(!eastPath.haveMonster(playerId)) {
-            if(monsterIterator.hasNext()) {
+        if (!eastPath.haveMonster(playerId)) {
+            if (monsterIterator.hasNext()) {
                 eastPath.releaseMonster(playerId, monsterIterator.next());
             }
         } else {
             eastPath.nextRound(playerId, this);
         }
-        westPath.update();
-        eastPath.update();
         lifeLabel.setText("Vidas: " + this.castleLife);
     }
 

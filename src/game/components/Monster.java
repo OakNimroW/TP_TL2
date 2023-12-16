@@ -1,29 +1,38 @@
 package game.components;
 
 import game.attacks.Attack;
+import game.engine.Animation;
+import game.engine.SpriteSheet;
 import game.types.Type;
 
 import java.util.List;
 
 public abstract class Monster {
 
+    protected Integer maxLife;
     protected Integer life;
     protected Attack activeSkill;
     private Player player;
     protected String monsterName;
     protected List<Type> types;
+    protected SpriteSheet spriteSheet;
+    protected Animation animation;
 
     public abstract void attack(Monster monster);
 
     public void onDamageReceive(Integer damage, Monster monster) {
         this.life = this.life - damage;
-        if(this.life < 0) {
+        if (this.life <= 0) {
             this.life = 0;
+            animation = spriteSheet.getDeathAnimation();
+        } else {
+            animation = spriteSheet.getDamageTakenAnimation();
         }
         System.out.println(this + " fue herido, queda con " + this.life + " puntos de vida");
     }
 
     public void move(PathBox oldPathBox, PathBox newPathBox) {
+        animation = spriteSheet.getWalkAnimation();
         oldPathBox.setMonster(null);
         newPathBox.setMonster(this);
     }
