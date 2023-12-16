@@ -2,27 +2,33 @@ package game.components;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.function.Consumer;
 
 public class SegundaEvaluacionUI extends JFrame {
-    private JLabel label1;
-    private JLabel label2;
+    private final int ROWS = 19;
+    private final int COLUMNS = 12;
+
+    private JPanel[][] panelMatrix = new JPanel[ROWS][COLUMNS];
+    private JLabel label1, label2;
 
     public SegundaEvaluacionUI init() {
+        this.initPanels();
         this.addLabels();
-        setContentPane(new BackgroundPanel());
         setTitle("Segunda Evaluacion");
-        setSize(600, 900);
+        int width = 600;
+        setSize(width, width * ROWS / COLUMNS);
+        setContentPane(new BackgroundPanel());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GridLayout gridLayout = new GridLayout(ROWS, COLUMNS);
+        forEachPanel(SegundaEvaluacionUI.this::add);
 
-        setLayout(null);
+        setLayout(gridLayout);
         setLocationRelativeTo(null);
         return this;
     }
 
-    public void addPathBox(Point point, PathBox pathBox) {
-        pathBox.setLocation(point);
-        pathBox.setVisible(true);
-        this.add(pathBox);
+    public void addPathBox(int x, int y, PathBox pathBox) {
+        panelMatrix[y][x].add(pathBox);
     }
 
     private void addLabels() {
@@ -52,5 +58,28 @@ public class SegundaEvaluacionUI extends JFrame {
     public void refresh() {
         this.revalidate();
         this.repaint();
+    }
+
+    private void forEachPanel(Consumer<? super JPanel> consumer) {
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                consumer.accept(panelMatrix[i][j]);
+            }
+        }
+    }
+
+    private void initPanels() {
+        JPanel panel;
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                panel = new JPanel();
+                panel.setOpaque(false);
+                panel.setBackground(new Color(0, 0, 0, 0));
+                // panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                panel.setLayout(new GridLayout(0, 1));
+                panel.setVisible(true);
+                panelMatrix[i][j] = panel;
+            }
+        }
     }
 }

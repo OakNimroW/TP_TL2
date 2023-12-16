@@ -1,6 +1,5 @@
 package game.components;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -62,15 +61,15 @@ public class RumbleGame implements ActionListener {
 
         box15.setNorthBox(null);
         box15.setSouthBox(box27);
-        segundaEvaluacionUI.addPathBox(new Point(125, 225), box15);
+        segundaEvaluacionUI.addPathBox(2, 6, box15);
 
         box27.setNorthBox(box15);
         box27.setSouthBox(box39);
-        segundaEvaluacionUI.addPathBox(new Point(125, 405), box27);
+        segundaEvaluacionUI.addPathBox(2, 9, box27);
 
         box39.setNorthBox(box27);
         box39.setSouthBox(null);
-        segundaEvaluacionUI.addPathBox(new Point(125, 585), box39);
+        segundaEvaluacionUI.addPathBox(2, 12, box39);
 
         westPath.getPathBoxes().add(box15);
         westPath.getPathBoxes().add(box27);
@@ -82,15 +81,15 @@ public class RumbleGame implements ActionListener {
 
         box17.setNorthBox(null);
         box17.setSouthBox(box29);
-        segundaEvaluacionUI.addPathBox(new Point(415, 225), box17);
+        segundaEvaluacionUI.addPathBox(9, 6, box17);
 
         box29.setNorthBox(box17);
         box29.setSouthBox(box41);
-        segundaEvaluacionUI.addPathBox(new Point(415, 405), box29);
+        segundaEvaluacionUI.addPathBox(9, 9, box29);
 
         box41.setNorthBox(box29);
         box41.setSouthBox(null);
-        segundaEvaluacionUI.addPathBox(new Point(415, 585), box41);
+        segundaEvaluacionUI.addPathBox(9, 12, box41);
 
         eastPath.getPathBoxes().add(box17);
         eastPath.getPathBoxes().add(box29);

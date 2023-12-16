@@ -8,11 +8,11 @@ public class PathBox extends JPanel {
     private PathBox southBox;
     private PathBox northBox;
     private String name;
-    private final int BOX_WIDTH = 64;
+
+    ImageIcon healthBar = new ImageIcon("assets/bar_03.png");
 
     public PathBox(String name) {
         this.name = name;
-        this.setBounds(0, 0, BOX_WIDTH, BOX_WIDTH + 8);
         this.setOpaque(false);
     }
 
@@ -47,21 +47,24 @@ public class PathBox extends JPanel {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        Graphics2D g2D = (Graphics2D) g;
-
         if (this.monster != null) {
+            Graphics2D g2D = (Graphics2D) g;
             g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-            g2D.drawImage(monster.animation.getSprite(), 0, 0, BOX_WIDTH, BOX_WIDTH, null);
 
+            int width = this.getWidth();
+            int height = this.getHeight();
+            g2D.drawImage(monster.animation.getSprite(), 0, 0, width, height, null);
+
+            int healthBarHeight = (height * 13) / 100;
+            g2D.setPaint(Color.BLACK);
+            g2D.fillRect(1, 1, width - 2, healthBarHeight - 2);
             if (monster.getPlayer().getId().equals(1L)) {
                 g2D.setPaint(new Color(123, 179, 252));
             } else {
                 g2D.setPaint(new Color(231, 123, 123));
             }
-            int lifeBarWidth = (int) (BOX_WIDTH * ((double) monster.getLife() / monster.maxLife));
-            g2D.fillRect(0, BOX_WIDTH + 4, lifeBarWidth, 4);
-            g2D.setPaint(Color.BLACK);
-            g2D.fillRect(lifeBarWidth, BOX_WIDTH + 4, BOX_WIDTH - lifeBarWidth, 4);
+            g2D.fillRect(1, 1, ((width - 2) * monster.getLife()) / monster.maxLife, healthBarHeight - 2);
+            g2D.drawImage(healthBar.getImage(), 0, 0, width, healthBarHeight, null);
         }
     }
 
