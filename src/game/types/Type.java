@@ -10,6 +10,7 @@ public enum Type {
     TANK,
     FIGHTER,
     STORMTROOPER,
-    ANTITANK
+    ANTITANK,
+    ICE
     
 }
