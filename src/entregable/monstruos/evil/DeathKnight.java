@@ -15,7 +15,7 @@ public class DeathKnight extends Monster {
     private List<Attack> skills = Arrays.asList(new Kick(), new Slice());
 
     public DeathKnight(String name) {
-        super("Dead Knight", 300, Arrays.asList(Type.ANIMAL, Type.DEMON), new SpriteSheet("death_knight_1"));
+        super("Death Knight", 300, Arrays.asList(Type.ANIMAL, Type.DEMON), new SpriteSheet("death_knight_1"));
         activeSkill = skills.get(0);
     }
 

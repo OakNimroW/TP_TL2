@@ -1,17 +1,12 @@
 import game.components.Monster;
 import game.components.RumbleGame;
-import game.monsters.evil.EvilBeast;
-import game.monsters.good.IceBeast;
-import game.monsters.good.Spartan;
 import game.types.Type;
 
 import java.util.Arrays;
 import java.util.List;
 
-import entregable.monstruos.evil.DeathKnight;
-import entregable.monstruos.evil.Tank;
-import entregable.monstruos.good.Deer;
-import entregable.monstruos.good.SwordsMan;
+import entregable.monstruos.evil.*;
+import entregable.monstruos.good.*;
 import entregable.ordenadores.*;
 
 public class Main {
@@ -20,25 +15,7 @@ public class Main {
         rumbleGame.init();
 
         List<Monster> monstersOne = Arrays.asList(
-                new Deer("Oh deer")
-        // new Spartan("Spartan 1"),
-        // new Spartan("Spartan 2"),
-        // new Spartan("Spartan 3"),
-        // new Spartan("Spartan 4"),
-        // new IceBeast("Ice Beast 2"),
-        // new Spartan("Spartan 5"),
-        // new SwordsMan("Samurai 1",200, 3, 8),
-        // new Tank("Gordo Monstruo")
-        // new Spartan("Spartan 6"),
-        // new SwordsMan("Samurai 3"),
-        // new Spartan("Spartan 9"),
-        // new Spartan("Spartan 10"),
-        // new IceBeast("Ice Beast"),
-        // new Spartan("Spartan 24"),
-        // new SwordsMan("Samurai 2"),
-        // new Spartan("Spartan 64"),
-        // new Spartan("Spartan 15")
-        );
+                new Deer("Oh deer"));
 
         // TODO ordenar el listado de monstruos que recibe el jugador uno
         monstersOne = ordenarListaMonstruo(monstersOne,
@@ -47,16 +24,8 @@ public class Main {
         rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
         List<Monster> monstersTwo = Arrays.asList(
-                new DeathKnight("Death knight")
-        // new Spartan("Spartan A"),
-        // new Spartan("Spartan B"),
-        // new EvilBeast("EvilBeast arr >:O"),
-        // new Tank("Tank B"),
-        // new SwordsMan("Samurai A", 200, 3, 8),
-        // new SwordsMan("Samurai B"),
-        // new Tank("Tank A"),
-        // new SwordsMan("Samurai C", 300, 1, 5)
-        );
+                // new DeathKnight("Death knight")
+                new Skeleton("Skeleton"));
 
         // TODO ordenar el listado de monstruos que recibe el jugador dos
 
