@@ -1,4 +1,4 @@
-package game.monsters;
+package game.monsters.good;
 
 import game.attacks.Slice;
 import game.components.Monster;

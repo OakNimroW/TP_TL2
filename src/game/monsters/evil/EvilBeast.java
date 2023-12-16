@@ -1,4 +1,4 @@
-package game.monsters;
+package game.monsters.evil;
 
 import game.attacks.Curse;
 import game.components.Monster;

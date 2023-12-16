@@ -1,4 +1,4 @@
-package game.monsters;
+package game.monsters.good;
 
 import game.attacks.ColdBreath;
 import game.attacks.IceSpike;

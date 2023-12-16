@@ -9,7 +9,6 @@ import java.util.List;
 
 public abstract class Monster {
 
-    // TODO(b-Tomas): Use setters and getters for attributes we use
     protected Integer maxLife;
     protected Integer life;
     protected Attack activeSkill;
@@ -19,7 +18,16 @@ public abstract class Monster {
     protected SpriteSheet spriteSheet;
     protected Animation animation;
 
-    public abstract void attack(Monster monster);
+    protected Monster(String name, Integer maxLife, List<Type> types, SpriteSheet spriteSheet) {
+        this.monsterName = name;
+        this.maxLife = maxLife;
+        this.life = maxLife;
+        this.types = types;
+        this.spriteSheet = spriteSheet;
+        this.animation = spriteSheet.getIdleAnimation();
+    }
+
+    public abstract void attack(Monster enemy);
 
     public void onDamageReceive(Integer damage, Monster monster) {
         this.life = this.life - damage;
@@ -52,6 +60,10 @@ public abstract class Monster {
 
     public List<Type> getTypes() {
         return types;
+    }
+
+    public boolean isType(Type type) {
+        return types.contains(type);
     }
 
     @Override
