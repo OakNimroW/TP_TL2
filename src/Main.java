@@ -8,8 +8,8 @@ import game.types.Type;
 import java.util.Arrays;
 import java.util.List;
 
-import entregable.monstruos.SwordsMan;
-import entregable.monstruos.Tank;
+import entregable.monstruos.evil.Tank;
+import entregable.monstruos.good.SwordsMan;
 import entregable.ordenadores.*;
 
 public class Main {
@@ -17,23 +17,25 @@ public class Main {
         RumbleGame rumbleGame = RumbleGame.getInstance();
         rumbleGame.init();
 
-        List<Monster> monstersOne = Arrays.asList(new Spartan("Spartan 1"),
-                new Spartan("Spartan 2"),
-                new Spartan("Spartan 3"),
-                new Spartan("Spartan 4"),
+        List<Monster> monstersOne = Arrays.asList(
+                // new Spartan("Spartan 1"),
+                // new Spartan("Spartan 2"),
+                // new Spartan("Spartan 3"),
+                // new Spartan("Spartan 4"),
                 new IceBeast("Ice Beast 2"),
                 new Spartan("Spartan 5"),
                 // new SwordsMan("Samurai 1",200, 3, 8),
-                new Tank("Gordo Mounstro"),
-                new Spartan("Spartan 6"),
-                new SwordsMan("Samurai 3"),
-                new Spartan("Spartan 9"),
-                new Spartan("Spartan 10"),
-                new IceBeast("Ice Beast"),
-                new Spartan("Spartan 24"),
-                new SwordsMan("Samurai 2"),
-                new Spartan("Spartan 64"),
-                new Spartan("Spartan 15"));
+                new Tank("Gordo Monstruo")
+                // new Spartan("Spartan 6"),
+                // new SwordsMan("Samurai 3"),
+                // new Spartan("Spartan 9"),
+                // new Spartan("Spartan 10"),
+                // new IceBeast("Ice Beast"),
+                // new Spartan("Spartan 24"),
+                // new SwordsMan("Samurai 2"),
+                // new Spartan("Spartan 64"),
+                // new Spartan("Spartan 15")
+                );
 
         // TODO ordenar el listado de monstruos que recibe el jugador uno
         monstersOne = ordenarListaMonstruo(monstersOne,

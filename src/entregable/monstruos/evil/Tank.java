@@ -1,7 +1,8 @@
-package entregable.monstruos;
+package entregable.monstruos.evil;
 
 import game.types.Type;
 import game.components.Monster;
+import game.components.PathBox;
 import game.engine.SpriteSheet;
 
 import java.util.Arrays;
@@ -10,7 +11,8 @@ import entregable.ataques.Punch;
 
 public class Tank extends Monster {
 
-    // [LM] TODO Hacer que Tank se mueva ciclo por medio
+    private final int turnsPerMove = 2;
+    private int turnsSiceLastMove = turnsPerMove;
 
     public Tank(String name) {
         this.maxLife = this.life = 1800;
@@ -19,22 +21,17 @@ public class Tank extends Monster {
         this.types = Arrays.asList(Type.BEAST, Type.TANK);
         this.spriteSheet = new SpriteSheet("treant_1");
         this.animation = spriteSheet.getIdleAnimation();
-
     }
 
-    // TODO onDamageReceive
-    // Debilidad hacia SowrdsMans
-    // Fortaleza hacia Spartans (recibe la mitad de daño)
-
     @Override
-    public void onDamageReceive(Integer damage, Monster monster) {
-        // System.out.println("[+] " + this + " esta siendo atacado por " + monster);
-
-        if (Math.random() > 0.95) {
-            damage = 0;
+    public void move(PathBox oldPathBox, PathBox newPathBox) {
+        if (turnsPerMove == turnsSiceLastMove) {
+            turnsSiceLastMove = 0;
+            super.move(oldPathBox, newPathBox);
+        } else {
+            turnsSiceLastMove++;
+            return;
         }
-
-        super.onDamageReceive(damage, monster);
     }
 
     @Override

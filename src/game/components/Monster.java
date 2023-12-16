@@ -9,6 +9,7 @@ import java.util.List;
 
 public abstract class Monster {
 
+    // TODO(b-Tomas): Use setters and getters for attributes we use
     protected Integer maxLife;
     protected Integer life;
     protected Attack activeSkill;

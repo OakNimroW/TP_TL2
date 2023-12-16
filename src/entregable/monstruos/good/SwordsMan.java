@@ -1,4 +1,4 @@
-package entregable.monstruos;
+package entregable.monstruos.good;
 
 import game.components.Monster;
 import game.engine.SpriteSheet;
@@ -11,7 +11,7 @@ import entregable.ataques.MultiSlice;
 public class SwordsMan extends Monster {
 
     public SwordsMan(String name) {
-        this.life = 300;
+        this.maxLife = this.life = 300;
         this.activeSkill = new MultiSlice();
         this.monsterName = name;
         this.types = Arrays.asList(Type.SWORD, Type.ANTITANK, Type.FIGHTER);
@@ -20,10 +20,8 @@ public class SwordsMan extends Monster {
     }
 
     public SwordsMan(String name, int basicDamage, int minAttacks, int maxAttacks) {
-        this.life = 300;
+        this(name);
         this.activeSkill = new MultiSlice(basicDamage, minAttacks, maxAttacks);
-        this.monsterName = name;
-        this.types = Arrays.asList(Type.SWORD, Type.ANTITANK, Type.FIGHTER);
     }
 
     @Override
@@ -32,5 +30,4 @@ public class SwordsMan extends Monster {
         System.out.println("--     [" + this + "] ataca a [" + enemy + "] haciendole " + damage + " de daño");
         enemy.onDamageReceive(damage, this);
     }
-
 }
