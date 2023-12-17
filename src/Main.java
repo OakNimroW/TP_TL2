@@ -29,7 +29,8 @@ public class Main {
                 // new DeathKnight("Death knight")
                 // new Skeleton("Skeleton"),
                 // new EvilBeast("Evil beast"),
-                new Spider("Spider")
+                // new Spider("Spider"),
+                new Vampire("Vampire")
                 );
 
         Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();
