@@ -3,6 +3,8 @@ package game.components;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+
+import game.exceptions.NoMonstersException;
 import game.random.RandomGenerator;
 
 public class RumbleGame implements ActionListener {
@@ -94,7 +96,7 @@ public class RumbleGame implements ActionListener {
         segundaEvaluacionUI.refresh();
     }
 
-    public void nextRound() {
+    public void nextRound() throws NoMonstersException {
         System.out.println();
         System.out.println();
         System.out.println("Siguiente Ronda numero: " + round);
@@ -117,8 +119,16 @@ public class RumbleGame implements ActionListener {
             System.out.println("****         Ganador el Jugador Rojo!!!         ****");
             isPlaying = false;
         }
-        if (round == 100) {
-            isPlaying = false;
+        if (isPlaying) {
+            if (round == 100) {
+                System.out.println("****          Se llegó a la ronda 100           ****");
+                isPlaying = false;
+            } else if (!eastPath.hasAnyMonster()
+                    && !westPath.hasAnyMonster()
+                    && !playerOne.hasMonstersLeft()
+                    && !playerTwo.hasMonstersLeft()) {
+                throw new NoMonstersException();
+            }
         }
     }
 
@@ -134,17 +144,35 @@ public class RumbleGame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if (arg0.getSource() == timer) {
-            timeSinceLastRound += TIMER_DELAY;
-            if (timeSinceLastRound >= 1500) {
-                timeSinceLastRound -= 1500;
-                nextRound();
-            }
-            westPath.tick();
-            eastPath.tick();
+            try {
+                timeSinceLastRound += TIMER_DELAY;
+                if (timeSinceLastRound >= 1500) {
+                    timeSinceLastRound -= 1500;
+                    nextRound();
+                }
+                westPath.tick();
+                eastPath.tick();
 
-            if (!isPlaying) {
+                if (!isPlaying) {
+                    timer.stop();
+
+                    if (playerOne.getCastle().getCastleLife() <= 0) {
+                        if (playerTwo.getCastle().getCastleLife() <= 0) {
+                            new EndFrame("Empate", "Ambos jugadores se han quedado sin vidas.");
+                        } else {
+                            new EndFrame("¡Fin del juego!", "¡El jugador 2 ha ganado!");
+                        }
+                    } else if (playerTwo.getCastle().getCastleLife() <= 0) {
+                        new EndFrame("¡Fin del juego!", "¡El jugador 1 ha ganado!");
+                    } else {
+                        new EndFrame("Empate", "Se ha llegado a la ronda 100.");
+                    }
+                }
+            } catch (NoMonstersException e) {
                 timer.stop();
-                System.exit(0);
+                System.out.println("****          No hay mas monstruos           ****");
+                isPlaying = false;
+                new EndFrame("Empate", "Ambos jugadores se han quedado sin monstruos.");
             }
         }
     }
