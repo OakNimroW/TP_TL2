@@ -10,6 +10,8 @@ public class BackgroundPanel extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(background.getImage(), 0, 0, this);
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+        g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
     }
 }

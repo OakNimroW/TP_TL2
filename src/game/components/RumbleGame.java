@@ -1,6 +1,5 @@
 package game.components;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -56,48 +55,42 @@ public class RumbleGame implements ActionListener {
         segundaEvaluacionUI = new SegundaEvaluacionUI();
         segundaEvaluacionUI.init().setVisible(true);
 
-        PathBox box15 = new PathBox("Noroeste");
-        PathBox box27 = new PathBox("Oeste");
-        PathBox box39 = new PathBox("Suroeste");
+        PathBox box15 = segundaEvaluacionUI.getPathBox(15);
+        PathBox box27 = segundaEvaluacionUI.getPathBox(27);
+        PathBox box39 = segundaEvaluacionUI.getPathBox(39);
 
         box15.setNorthBox(null);
         box15.setSouthBox(box27);
-        segundaEvaluacionUI.addPathBox(new Point(125, 225), box15);
 
         box27.setNorthBox(box15);
         box27.setSouthBox(box39);
-        segundaEvaluacionUI.addPathBox(new Point(125, 405), box27);
 
         box39.setNorthBox(box27);
         box39.setSouthBox(null);
-        segundaEvaluacionUI.addPathBox(new Point(125, 585), box39);
 
         westPath.getPathBoxes().add(box15);
         westPath.getPathBoxes().add(box27);
         westPath.getPathBoxes().add(box39);
 
-        PathBox box17 = new PathBox("Noreste");
-        PathBox box29 = new PathBox("Este");
-        PathBox box41 = new PathBox("Sureste");
+        PathBox box17 = segundaEvaluacionUI.getPathBox(17);
+        PathBox box29 = segundaEvaluacionUI.getPathBox(29);
+        PathBox box41 = segundaEvaluacionUI.getPathBox(41);
 
         box17.setNorthBox(null);
         box17.setSouthBox(box29);
-        segundaEvaluacionUI.addPathBox(new Point(415, 225), box17);
 
         box29.setNorthBox(box17);
         box29.setSouthBox(box41);
-        segundaEvaluacionUI.addPathBox(new Point(415, 405), box29);
 
         box41.setNorthBox(box29);
         box41.setSouthBox(null);
-        segundaEvaluacionUI.addPathBox(new Point(415, 585), box41);
 
         eastPath.getPathBoxes().add(box17);
         eastPath.getPathBoxes().add(box29);
         eastPath.getPathBoxes().add(box41);
 
-        castleOne.setLifeLabel(segundaEvaluacionUI.getVidasPlayerOneLabel());
-        castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
+        castleOne.setLifePanels(segundaEvaluacionUI.getLifePanelsCastleOne());
+        castleTwo.setLifePanels(segundaEvaluacionUI.getLifePanelsCastleTwo());
         segundaEvaluacionUI.refresh();
     }
 

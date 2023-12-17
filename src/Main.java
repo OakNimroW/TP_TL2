@@ -1,6 +1,5 @@
 import game.components.Monster;
 import game.components.RumbleGame;
-import game.types.Type;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,27 +16,27 @@ public class Main {
         List<Monster> monstersOne = Arrays.asList(
                 new Deer("Oh deer"));
 
-        // TODO ordenar el listado de monstruos que recibe el jugador uno
-        monstersOne = ordenarListaMonstruo(monstersOne,
-                new OrdenadorPreferenciaDeTipo(Arrays.asList(Type.PROTECTED, Type.FIGHTER, Type.BEAST)));
-
-        rumbleGame.getPlayerOne().setMonsters(monstersOne);
-
         List<Monster> monstersTwo = Arrays.asList(
                 // new DeathKnight("Death knight")
                 new Skeleton("Skeleton"));
 
-        // TODO ordenar el listado de monstruos que recibe el jugador dos
+        Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();
+        monstersOne = ordenadorOne.ordenar(monstersOne);
+        rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
-        monstersTwo = ordenarListaMonstruo(monstersTwo, new OrdenadorVidaInicioMayor());
-
+        Ordenador ordenadorTwo = new OrdenadorVidaInicioMayor();
+        monstersTwo = ordenadorTwo.ordenar(monstersTwo);
         rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
+
+        // TODO(b-Tomas): reenable selector before merging. The lists made above are for
+        // testing purposes only.
+        // MonsterSelector selector = MonsterSelector.getInstance();
+
+        // selector.configurePlayerCLI(rumbleGame.getPlayerOne());
+
+        // selector.configurePlayerCLI(rumbleGame.getPlayerTwo());
 
         rumbleGame.startGame();
     }
 
-    private static List<Monster> ordenarListaMonstruo(List<Monster> lista, Ordenador orden) {
-        return orden.ordenar(lista);
-
-    }
 }
