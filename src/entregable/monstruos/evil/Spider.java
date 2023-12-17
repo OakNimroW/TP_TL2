@@ -1,7 +1,6 @@
 package entregable.monstruos.evil;
 
 import java.util.Arrays;
-import java.util.List;
 
 import entregable.ataques.Bite;
 import game.components.Monster;
