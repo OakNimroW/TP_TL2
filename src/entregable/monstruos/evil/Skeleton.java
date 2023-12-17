@@ -7,6 +7,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Esqueleto.
+ * 
+ * Monstruo de tipo FRAGILE, DEMON y SWORD.
+ * 
+ * Ataca con cortes.
+ */
 public class Skeleton extends Monster {
 
     public Skeleton(String name) {

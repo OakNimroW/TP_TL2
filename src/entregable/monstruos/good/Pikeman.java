@@ -7,6 +7,14 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Piquero.
+ * 
+ * Monstruo de tipo FIGHTER, SWORD y PROTECTED.
+ * 
+ * Ataca con múltiples cortes.
+ * Al recibir daño, inflinge 80 de daño al oponente con su pica.
+ */
 public class Pikeman extends Monster {
 
     private final int pike_damage = 80;

@@ -7,6 +7,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Jinete de lobo.
+ * 
+ * Monstruo de tipo ANIMAL y MYSTIC.
+ * 
+ * Ataca con mordidas.
+ */
 public class WolfRider extends Monster {
 
     public WolfRider(String name) {

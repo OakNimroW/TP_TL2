@@ -10,6 +10,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Caballero de la muerte.
+ * 
+ * Monstruo de ipo ANIMAL y DEMON.
+ * 
+ * Alterna ataques de patada y corte.
+ */
 public class DeathKnight extends Monster {
 
     private List<Attack> skills = Arrays.asList(new Kick(), new Slice());

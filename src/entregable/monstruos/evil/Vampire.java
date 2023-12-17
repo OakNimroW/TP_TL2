@@ -9,6 +9,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Vampiro.
+ * 
+ * Monstruo de tipo ANIMAL, DEMON y MYSTIC.
+ * 
+ * Alterna ataques de mordida y hechizos.
+ */
 public class Vampire extends Monster {
 
     private Attack spellAttack = new Spell();
