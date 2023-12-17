@@ -1,10 +1,9 @@
 package entregable.ataques;
 
-import game.attacks.Attack;
 import game.components.Monster;
 import game.random.RandomGenerator;
 
-public class Punch implements Attack {
+public class Punch implements Hit {
     
     @Override
     public int damage(Monster monster) {

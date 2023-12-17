@@ -7,9 +7,10 @@ public enum Type {
     SWORD,
     BEAST,
 
-    TANK,
+    // Nuestros tipos
     FIGHTER,
-    STORMTROOPER,
-    ANTITANK
-    
+    MYSTIC,
+    ANIMAL,
+    PROTECTED,
+    FRAGILE
 }

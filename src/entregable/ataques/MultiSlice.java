@@ -4,17 +4,17 @@ import game.attacks.Attack;
 
 import game.components.Monster;
 
-public class Swords implements Attack {
+public class MultiSlice implements Attack {
 
     private int basicDamage;
     private int minAttacks;
     private int maxAttacks;
 
-    public Swords() {
-        this(100, 5, 12);
+    public MultiSlice() {
+        this(70, 3, 8);
     }
 
-    public Swords(int basicDamage, int minAttacks, int maxAttacks) {
+    public MultiSlice(int basicDamage, int minAttacks, int maxAttacks) {
         this.basicDamage = basicDamage;
         this.minAttacks = minAttacks;
         this.maxAttacks = maxAttacks;
@@ -22,10 +22,13 @@ public class Swords implements Attack {
 
     @Override
     public int damage(Monster monster) {
-        // Swords realiza un ataque de poco daño pero multiples veces
-        // Daño_de_golpe * Cantidad_de_golpes
+        // MultiSlice realiza un ataque de poco daño pero multiples veces
 
+        // Num random entre minAttacks y maxAttacks
         int cant_attacks = (int) Math.round(Math.random() * (maxAttacks - minAttacks) + minAttacks);
+
+        System.out.println("MultiSlice: El monstruo '" + monster.toString() + "' recibe " + cant_attacks + " ataques de daño "
+                + this.basicDamage);
 
         return this.basicDamage * cant_attacks;
     }

@@ -18,9 +18,18 @@ public abstract class Monster {
     protected SpriteSheet spriteSheet;
     protected Animation animation;
 
-    public abstract void attack(Monster monster);
+    protected Monster(String name, Integer maxLife, List<Type> types, SpriteSheet spriteSheet) {
+        this.monsterName = name;
+        this.maxLife = maxLife;
+        this.life = maxLife;
+        this.types = types;
+        this.spriteSheet = spriteSheet;
+        this.animation = spriteSheet.getIdleAnimation();
+    }
 
-    public void onDamageReceive(Integer damage, Monster monster) {
+    public abstract void attack(Monster enemy);
+
+    public void onDamageReceive(Integer damage, Monster enemy) {
         this.life = this.life - damage;
         if (this.life <= 0) {
             this.life = 0;
@@ -51,6 +60,10 @@ public abstract class Monster {
 
     public List<Type> getTypes() {
         return types;
+    }
+
+    public boolean isType(Type type) {
+        return types.contains(type);
     }
 
     @Override

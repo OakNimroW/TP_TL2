@@ -14,13 +14,24 @@ public class RandomGenerator {
 
     public int nextPlayer() {
         double random = Math.random();
-        return (random > 0.5f)? 1 : 2;
+        return (random > 0.5f) ? 1 : 2;
     }
 
-    /** Retorna un valor aleatorio que se encuentra entre los valores minimos y maximos pasados
+    /**
+     * Retorna un valor aleatorio que se encuentra entre los valores minimos y
+     * maximos pasados
      * como parametro.
-     * */
+     */
     public int calculateDamage(int min, int max) {
-        return (int)(Math.random() * (max - min) + min);
+        return (int) (Math.random() * (max - min) + min);
+    }
+
+    public boolean randomBernoulli(float p) {
+        /* p is the probablity that the outcome is true */
+        if (Math.random() < p) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
