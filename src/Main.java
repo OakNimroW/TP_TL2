@@ -21,7 +21,8 @@ public class Main {
                 // new Pikeman("Pikeman"),
                 // new SwordsMan("Swordsman"),
                 // new WolfRider("WolfRider"),
-                new Monk("Monk")
+                // new Monk("Monk"),
+                new IceBeast("Ice beast")
                 );
 
         List<Monster> monstersTwo = Arrays.asList(
