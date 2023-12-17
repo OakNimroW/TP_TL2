@@ -17,20 +17,20 @@ public class Main {
         rumbleGame.init();
 
         List<Monster> monstersOne = Arrays.asList(
-                // new Deer("Oh deer"),
-                // new Pikeman("Pikeman"),
-                // new SwordsMan("Swordsman"),
-                // new WolfRider("WolfRider"),
-                new Monk("Monk")
-                // new IceBeast("Ice beast")
+                new Deer("Oh deer"),
+                new Pikeman("Pikeman"),
+                new SwordsMan("Swordsman"),
+                new WolfRider("WolfRider"),
+                new Monk("Monk"),
+                new IceBeast("Ice beast")
                 );
                 
                 List<Monster> monstersTwo = Arrays.asList(
-                    // new DeathKnight("Death knight")
-                    // new Skeleton("Skeleton"),
-                    // new EvilBeast("Evil beast"),
-                    // new Spider("Spider"),
-                    // new Vampire("Vampire")
+                    new DeathKnight("Death knight"),
+                    new Skeleton("Skeleton"),
+                    new EvilBeast("Evil beast"),
+                    new Spider("Spider"),
+                    new Vampire("Vampire"),
                     new Ghost("Ghost")
                 );
 
