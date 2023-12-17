@@ -20,6 +20,11 @@ public class Path {
                 pathBox -> pathBox.getMonster() != null && pathBox.getMonster().getPlayer().getId().equals(playerId));
     }
 
+    // Arreglamos un error:
+    // Cuando se realiza un ataque, ambos monstruos se atacan entre si.
+    // Originalmente, solo se comprobaba si el monstruo atacado por el
+    // monstruo del jugador del turno actual tenía vida <= 0, pero no
+    // se comprobaba si el monstruo del jugador del turno moría.
     public void nextRound(Long playerId, Castle castle) {
         Optional<PathBox> occupiedPathBox = pathBoxes.stream().filter(
                 pathBox -> pathBox.getMonster() != null && pathBox.getMonster().getPlayer().getId().equals(playerId))
@@ -43,6 +48,9 @@ public class Path {
                         if (occupiedPathBox.get().getNorthBox().getMonster().getLife() <= 0) {
                             occupiedPathBox.get().getNorthBox().setMonster(null);
                         }
+                        if (occupiedPathBox.get().getMonster().getLife() <= 0) {
+                            occupiedPathBox.get().setMonster(null);
+                        }
                     }
                 }
             } else {
@@ -62,6 +70,9 @@ public class Path {
                         occupiedPathBox.get().getSouthBox().getMonster().attack(occupiedPathBox.get().getMonster());
                         if (occupiedPathBox.get().getSouthBox().getMonster().getLife() <= 0) {
                             occupiedPathBox.get().getSouthBox().setMonster(null);
+                        }
+                        if (occupiedPathBox.get().getMonster().getLife() <= 0) {
+                            occupiedPathBox.get().setMonster(null);
                         }
                     }
                 }
