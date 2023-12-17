@@ -8,8 +8,8 @@ import game.attacks.Attack;
 import game.components.Monster;
 import game.components.PathBox;
 import game.engine.SpriteSheet;
+import game.random.RandomGenerator;
 import game.types.Type;
-import java.util.Random;
 
 public class Monk extends Monster {
 
@@ -19,8 +19,6 @@ public class Monk extends Monster {
     private final int turnsPerMove = 2;
     private int turnsSiceLastMove = turnsPerMove;
 
-    private Random random = new Random();
-
     public Monk(String name) {
         super(name, 600, Arrays.asList(Type.FIGHTER, Type.MYSTIC), new SpriteSheet("monk_0"));
         activeSkill = punchAttack;
@@ -28,10 +26,12 @@ public class Monk extends Monster {
 
     @Override
     public void attack(Monster enemy) {
-        /* Si el enemigo es Místico o Demonio, hay 50% chance de que el Monje ataque con un hechizo */
+        /*
+         * Si el enemigo es Místico o Demonio, hay 65% chance de que el Monje ataque con
+         * un hechizo
+         */
         if (enemy.isType(Type.MYSTIC) || enemy.isType(Type.DEMON)) {
-            int randomNumber = random.nextInt(2); // Numero aleatorio entre 0 y 1
-            if (randomNumber == 0) {
+            if (RandomGenerator.getInstance().randomBernoulli(0.65f)) {
                 activeSkill = spellAttack;
             } else {
                 activeSkill = punchAttack;
@@ -50,6 +50,7 @@ public class Monk extends Monster {
             turnsSiceLastMove = 0;
             super.move(oldPathBox, newPathBox);
         } else {
+            animation = spriteSheet.getIdleAnimation();
             turnsSiceLastMove++;
             return;
         }

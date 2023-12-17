@@ -24,9 +24,13 @@ public class Pikeman extends Monster {
 
     @Override
     public void onDamageReceive(Integer damage, Monster enemy) {
-        /* Recibe el daño que le corresponde, pero además hace daño al oponente */
+        /*
+         * Recibe el daño que le corresponde, pero además hace daño al oponente con su
+         * pica
+         * Al ser los ataques simultáneos, el resultado es el mismo que si se realizase
+         * un ataque MultiSlice + un fijo de 80 de daño en attack()
+         */
         super.onDamageReceive(damage, enemy);
-        if (this.getLife() > 0)
-            enemy.onDamageReceive(pike_damage, enemy);
+        enemy.onDamageReceive(pike_damage, enemy);
     }
 }

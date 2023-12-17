@@ -7,7 +7,7 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
-public class Ghost extends Monster{
+public class Ghost extends Monster {
 
     public Ghost(String name) {
         super(name, 100, List.of(Type.DEMON, Type.MYSTIC), new SpriteSheet("ghost_0"));

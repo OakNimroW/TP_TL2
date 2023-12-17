@@ -24,7 +24,7 @@ public class Deer extends Monster {
     public void onDamageReceive(Integer damage, Monster monster) {
         /* The deer can parry attacks from sword monsters */
         if (monster.isType(Type.SWORD)) {
-            damage = 2;
+            damage /= 10;
         }
         super.onDamageReceive(damage, monster);
     }
