@@ -21,16 +21,17 @@ public class Main {
                 // new Pikeman("Pikeman"),
                 // new SwordsMan("Swordsman"),
                 // new WolfRider("WolfRider"),
-                // new Monk("Monk"),
-                new IceBeast("Ice beast")
+                new Monk("Monk")
+                // new IceBeast("Ice beast")
                 );
-
-        List<Monster> monstersTwo = Arrays.asList(
-                // new DeathKnight("Death knight")
-                // new Skeleton("Skeleton"),
-                // new EvilBeast("Evil beast"),
-                // new Spider("Spider"),
-                new Vampire("Vampire")
+                
+                List<Monster> monstersTwo = Arrays.asList(
+                    // new DeathKnight("Death knight")
+                    // new Skeleton("Skeleton"),
+                    // new EvilBeast("Evil beast"),
+                    // new Spider("Spider"),
+                    // new Vampire("Vampire")
+                    new Ghost("Ghost")
                 );
 
         Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();
