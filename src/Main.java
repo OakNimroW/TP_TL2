@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import entregable.monstruos.evil.*;
+import game.monsters.evil.*;
 import entregable.monstruos.good.*;
+
 import entregable.ordenadores.*;
 
 public class Main {
@@ -18,7 +20,8 @@ public class Main {
 
         List<Monster> monstersTwo = Arrays.asList(
                 // new DeathKnight("Death knight")
-                new Skeleton("Skeleton"));
+                // new Skeleton("Skeleton"),
+                new EvilBeast("Evil beast"));
 
         Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();
         monstersOne = ordenadorOne.ordenar(monstersOne);

@@ -10,12 +10,8 @@ import java.util.Arrays;
 public class EvilBeast extends Monster {
 
     public EvilBeast(String name) {
-        this.maxLife = this.life = 700;
-        this.monsterName = name;
+        super(name, 700, Arrays.asList(Type.BEAST, Type.DEMON, Type.FIRE), new SpriteSheet("devil_1"));
         this.activeSkill = new Curse();
-        this.types = Arrays.asList(Type.BEAST, Type.DEMON, Type.FIRE);
-        this.spriteSheet = new SpriteSheet("devil_1");
-        this.animation = spriteSheet.getIdleAnimation();
     }
 
     @Override
