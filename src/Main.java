@@ -17,13 +17,14 @@ public class Main {
 
         List<Monster> monstersOne = Arrays.asList(
                 // new Deer("Oh deer"),
-                new Pikeman("Pikeman")
+                // new Pikeman("Pikeman"),
+                new SwordsMan("Swordsman")
                 );
 
         List<Monster> monstersTwo = Arrays.asList(
-                // new DeathKnight("Death knight")
+                new DeathKnight("Death knight")
                 // new Skeleton("Skeleton"),
-                new EvilBeast("Evil beast")
+                // new EvilBeast("Evil beast")
                 );
 
         Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();

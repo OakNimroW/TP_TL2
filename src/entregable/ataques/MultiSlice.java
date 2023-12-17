@@ -11,7 +11,7 @@ public class MultiSlice implements Attack {
     private int maxAttacks;
 
     public MultiSlice() {
-        this(100, 5, 12);
+        this(70, 3, 8);
     }
 
     public MultiSlice(int basicDamage, int minAttacks, int maxAttacks) {

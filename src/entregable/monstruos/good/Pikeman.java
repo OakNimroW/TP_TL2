@@ -12,7 +12,7 @@ public class Pikeman extends Monster {
     private final int pike_damage = 80;
 
     public Pikeman(String name) {
-        super(name, 400, Arrays.asList(Type.FIGHTER, Type.SWORD), new SpriteSheet("pikeman_1"));
+        super(name, 400, Arrays.asList(Type.FIGHTER, Type.SWORD, Type.PROTECTED), new SpriteSheet("pikeman_1"));
         activeSkill = new MultiSlice(20, 3, 8);
     }
 
