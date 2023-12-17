@@ -3,16 +3,17 @@ package game.components;
 import javax.swing.*;
 import java.awt.*;
 
-public class PathBox {
+public class PathBox extends JPanel {
     private Monster monster;
     private PathBox southBox;
     private PathBox northBox;
     private String name;
-    private JButton buttonUI;
 
-    public PathBox(JButton buttonUI, String name) {
-        this.buttonUI = buttonUI;
+    ImageIcon healthBar = new ImageIcon("assets/bar_03.png");
+
+    public PathBox(String name) {
         this.name = name;
+        this.setOpaque(false);
     }
 
     public String getName() {
@@ -25,14 +26,6 @@ public class PathBox {
 
     public void setMonster(Monster monster) {
         this.monster = monster;
-    }
-
-    public JButton getButtonUI() {
-        return buttonUI;
-    }
-
-    public void setButtonUI(JButton buttonUI) {
-        this.buttonUI = buttonUI;
     }
 
     public PathBox getSouthBox() {
@@ -51,20 +44,34 @@ public class PathBox {
         this.northBox = northBox;
     }
 
-    public void update() {
-        if(this.monster != null) {
-            buttonUI.setVisible(true);
-            buttonUI.setText(monster.toString());
-            if(monster.getPlayer().getId().equals(1L)) {
-                buttonUI.setBackground(new Color(123, 179, 252));
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        if (this.monster != null) {
+            Graphics2D g2D = (Graphics2D) g;
+            g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+
+            int width = this.getWidth();
+            int height = this.getHeight();
+            g2D.drawImage(monster.animation.getSprite(), 0, 0, width, height, null);
+
+            int healthBarHeight = (height * 13) / 100;
+            g2D.setPaint(Color.BLACK);
+            g2D.fillRect(1, 1, width - 2, healthBarHeight - 2);
+            if (monster.getPlayer().getId().equals(1L)) {
+                g2D.setPaint(new Color(123, 179, 252));
             } else {
-                buttonUI.setBackground(new Color(231, 123, 123));
+                g2D.setPaint(new Color(231, 123, 123));
             }
-        } else {
-            buttonUI.setVisible(false);
-            buttonUI.setText("");
-            buttonUI.setBackground(Color.WHITE);
+            g2D.fillRect(1, 1, ((width - 2) * monster.getLife()) / monster.maxLife, healthBarHeight - 2);
+            g2D.drawImage(healthBar.getImage(), 0, 0, width, healthBarHeight, null);
         }
     }
 
+    public void tick() {
+        if (this.monster != null) {
+            monster.animation.tick();
+        }
+        repaint();
+    }
 }

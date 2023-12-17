@@ -1,15 +1,22 @@
 package game.components;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 import game.random.RandomGenerator;
 
-public class RumbleGame {
+public class RumbleGame implements ActionListener {
 
     private static RumbleGame instance = new RumbleGame();
-    private Player playerOne;
-    private Player playerTwo;
-    private boolean loopGame = true;
+    private final int TIMER_DELAY = 30;
+
+    private Player playerOne, playerTwo;
+    private Path westPath, eastPath;
+    private boolean isPlaying = false;
+    private int timeSinceLastRound = 0;
     private int round = 0;
     private SegundaEvaluacionUI segundaEvaluacionUI;
+    private Timer timer = new Timer(TIMER_DELAY, this);
 
     public static RumbleGame getInstance() {
         return instance;
@@ -24,7 +31,6 @@ public class RumbleGame {
     }
 
     private RumbleGame() {
-
     }
 
     public void init() {
@@ -34,8 +40,8 @@ public class RumbleGame {
         Castle castleOne = new Castle();
         Castle castleTwo = new Castle();
 
-        Path westPath = new Path();
-        Path eastPath = new Path();
+        westPath = new Path();
+        eastPath = new Path();
 
         castleOne.setEastPath(eastPath);
         castleOne.setWestPath(westPath);
@@ -49,9 +55,9 @@ public class RumbleGame {
         segundaEvaluacionUI = new SegundaEvaluacionUI();
         segundaEvaluacionUI.init().setVisible(true);
 
-        PathBox box15 = new PathBox(segundaEvaluacionUI.getButton(0), "Noroeste");
-        PathBox box27 = new PathBox(segundaEvaluacionUI.getButton(2), "Oeste");
-        PathBox box39 = new PathBox(segundaEvaluacionUI.getButton(4), "Suroeste");
+        PathBox box15 = segundaEvaluacionUI.getPathBox(15);
+        PathBox box27 = segundaEvaluacionUI.getPathBox(27);
+        PathBox box39 = segundaEvaluacionUI.getPathBox(39);
 
         box15.setNorthBox(null);
         box15.setSouthBox(box27);
@@ -66,9 +72,9 @@ public class RumbleGame {
         westPath.getPathBoxes().add(box27);
         westPath.getPathBoxes().add(box39);
 
-        PathBox box17 = new PathBox(segundaEvaluacionUI.getButton(1), "Noreste");
-        PathBox box29 = new PathBox(segundaEvaluacionUI.getButton(3), "Este");
-        PathBox box41 = new PathBox(segundaEvaluacionUI.getButton(5), "Sureste");
+        PathBox box17 = segundaEvaluacionUI.getPathBox(17);
+        PathBox box29 = segundaEvaluacionUI.getPathBox(29);
+        PathBox box41 = segundaEvaluacionUI.getPathBox(41);
 
         box17.setNorthBox(null);
         box17.setSouthBox(box29);
@@ -83,8 +89,9 @@ public class RumbleGame {
         eastPath.getPathBoxes().add(box29);
         eastPath.getPathBoxes().add(box41);
 
-        castleOne.setLifeLabel(segundaEvaluacionUI.getVidasPlayerOneLabel());
-        castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
+        castleOne.setLifePanels(segundaEvaluacionUI.getLifePanelsCastleOne());
+        castleTwo.setLifePanels(segundaEvaluacionUI.getLifePanelsCastleTwo());
+        segundaEvaluacionUI.refresh();
     }
 
     public void nextRound() {
@@ -93,7 +100,7 @@ public class RumbleGame {
         System.out.println("Siguiente Ronda numero: " + round);
         int jugador = RandomGenerator.getInstance().nextPlayer();
         System.out.println("Mueve primero el Jugador numero " + jugador);
-        if(jugador == 1) {
+        if (jugador == 1) {
             playerOne.nextRound();
             playerTwo.nextRound();
         } else {
@@ -102,30 +109,43 @@ public class RumbleGame {
         }
         segundaEvaluacionUI.refresh();
         round++;
-        if(playerOne.getCastle().getCastleLife() <= 0) {
+        if (playerOne.getCastle().getCastleLife() <= 0) {
             System.out.println("****         Ganador el Jugador Azul!!!         ****");
-            loopGame = false;
+            isPlaying = false;
         }
-        if(playerTwo.getCastle().getCastleLife() <= 0) {
+        if (playerTwo.getCastle().getCastleLife() <= 0) {
             System.out.println("****         Ganador el Jugador Rojo!!!         ****");
-            loopGame = false;
+            isPlaying = false;
         }
-        if(round == 100) {
-            loopGame = false;
+        if (round == 100) {
+            isPlaying = false;
         }
     }
 
     public void startGame() {
-        while(loopGame) {
-            try {
-                Thread.sleep(1500);
-                this.nextRound();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        timer.start();
+        isPlaying = true;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent arg0) {
+        if (arg0.getSource() == timer) {
+            timeSinceLastRound += TIMER_DELAY;
+            if (timeSinceLastRound >= 1500) {
+                timeSinceLastRound -= 1500;
+                nextRound();
+            }
+            westPath.tick();
+            eastPath.tick();
+
+            if (!isPlaying) {
+                timer.stop();
+                System.exit(0);
             }
         }
-        //TODO: Colocar una ventana modal con un mensaje que indique el resultado
-
-        System.exit(0);
     }
 }
