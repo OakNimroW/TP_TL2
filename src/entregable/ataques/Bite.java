@@ -5,6 +5,7 @@ import game.types.Type;
 
 /**
  * Ataque de mordida.
+ * 
  * Si el monstruo es de tipo "PROTECTED" (con armadura), el daño es 1.
  * De lo contrario, el daño es 300.
  */

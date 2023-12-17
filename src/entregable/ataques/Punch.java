@@ -5,6 +5,7 @@ import game.random.RandomGenerator;
 
 /**
  * Ataque de golpe de puño.
+ * 
  * Realiza daño entre 50 y 250.
  */
 public class Punch implements Hit {

@@ -6,6 +6,7 @@ import game.types.Type;
 
 /**
  * Ataque de hechizo.
+ * 
  * Si el monstruo es de tipo DEMON o MYSTIC, el daño es 250.
  * De lo contrario, el daño es 3.
  */

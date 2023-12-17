@@ -5,7 +5,8 @@ import game.attacks.Attack;
 import game.components.Monster;
 
 /**
- * Ataque de múltiples cortes
+ * Ataque de múltiples cortes.
+ * 
  * Realiza daño entre 3 y 8 veces, con un daño de 70 cada vez.
  */
 public class MultiSlice implements Attack {

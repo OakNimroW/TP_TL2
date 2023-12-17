@@ -8,7 +8,8 @@ import game.types.Type;
 
 /**
  * Esta clase implementa la interfaz Ordenador y representa un ordenador de
- * monstruos
+ * monstruos.
+ * 
  * basado en preferencia de tipos. Ordena una lista de monstruos colocando
  * primero
  * aquellos que contienen tipos preferidos y luego los demás.

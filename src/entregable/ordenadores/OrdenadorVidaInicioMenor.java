@@ -11,6 +11,7 @@ import game.components.Monster;
 /**
  * Clase que implementa la interfaz Ordenador y el comparador
  * Comparator<Monster>.
+ * 
  * Ordena una lista de monstruos por su vida en orden ascendente.
  */
 public class OrdenadorVidaInicioMenor implements Ordenador, Comparator<Monster> {

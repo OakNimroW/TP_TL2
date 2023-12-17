@@ -5,6 +5,7 @@ import game.types.Type;
 
 /**
  * Ataque de patada.
+ * 
  * Si el monstruo es de tipo "PROTECTED" (con armadura) y de tipo "SWORD" (con
  * espada), el daño es 1.
  * Si el monstruo es de tipo "FRAGILE" (frágil), el daño es el doble de
