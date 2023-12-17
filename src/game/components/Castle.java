@@ -1,6 +1,5 @@
 package game.components;
 
-import javax.swing.*;
 import java.util.Iterator;
 
 public class Castle {
@@ -8,7 +7,7 @@ public class Castle {
     private Integer castleLife = 3;
     private Path westPath;
     private Path eastPath;
-    private JLabel lifeLabel;
+    private LifePanels lifePanels;
 
     public Integer getCastleLife() {
         return castleLife;
@@ -30,7 +29,7 @@ public class Castle {
         } else {
             eastPath.nextRound(playerId, this);
         }
-        lifeLabel.setText("Vidas: " + this.castleLife);
+        lifePanels.setLife(this.castleLife);
     }
 
     public void setCastleLife(Integer castleLife) {
@@ -61,7 +60,7 @@ public class Castle {
         this.castleLife = life;
     }
 
-    public void setLifeLabel(JLabel lifeLabel) {
-        this.lifeLabel = lifeLabel;
+    public void setLifePanels(LifePanels lifePanels) {
+        this.lifePanels = lifePanels;
     }
 }

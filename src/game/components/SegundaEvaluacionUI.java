@@ -2,6 +2,7 @@ package game.components;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.function.Consumer;
 
 public class SegundaEvaluacionUI extends JFrame {
@@ -9,11 +10,13 @@ public class SegundaEvaluacionUI extends JFrame {
     private final int COLUMNS = 12;
 
     private JPanel[][] panelMatrix = new JPanel[ROWS][COLUMNS];
-    private JLabel label1, label2;
+    private LifePanels life1, life2;
+    private HashMap<Integer, PathBox> pathBoxes = new HashMap<>();
 
     public SegundaEvaluacionUI init() {
-        this.initPanels();
-        this.addLabels();
+        this.addLifePanels();
+        this.addPathBoxes();
+        this.fillPanels();
         setTitle("Segunda Evaluacion");
         int width = 600;
         setSize(width, width * ROWS / COLUMNS);
@@ -31,28 +34,60 @@ public class SegundaEvaluacionUI extends JFrame {
         panelMatrix[y][x].add(pathBox);
     }
 
-    private void addLabels() {
-        label1 = new JLabel();
-        label1.setText("Vidas: 3");
-        label1.setForeground(Color.RED);
-        label1.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-        // panelList.get(0).setLayout(new FlowLayout(FlowLayout.LEFT));
-        // panelList.get(0).add(label1);
+    private void addLifePanels() {
+        // "Castle one" no es el castillo del
+        // jugador 1, es el castillo al que
+        // ataca el jugador 1
 
-        label2 = new JLabel();
-        label2.setText("Vidas: 3");
-        label2.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-        label2.setForeground(Color.BLUE);
-        // panelList.get(57).setLayout(new FlowLayout(FlowLayout.LEFT));
-        // panelList.get(57).add(label2);
+        life1 = new LifePanels("castle_one");
+        panelMatrix[0][9] = life1.getPanel(0);
+        panelMatrix[0][10] = life1.getPanel(1);
+        panelMatrix[0][11] = life1.getPanel(2);
+
+        life2 = new LifePanels("castle_two");
+        panelMatrix[18][0] = life2.getPanel(0);
+        panelMatrix[18][1] = life2.getPanel(1);
+        panelMatrix[18][2] = life2.getPanel(2);
     }
 
-    public JLabel getVidasPlayerOneLabel() {
-        return label1;
+    private void addPathBoxes() {
+        PathBox box;
+
+        box = new PathBox("Nortoeste");
+        panelMatrix[6][2] = box;
+        pathBoxes.put(15, box);
+
+        box = new PathBox("Oeste");
+        panelMatrix[9][2] = box;
+        pathBoxes.put(27, box);
+
+        box = new PathBox("Suroeste");
+        panelMatrix[12][2] = box;
+        pathBoxes.put(39, box);
+
+        box = new PathBox("Noreste");
+        panelMatrix[6][9] = box;
+        pathBoxes.put(17, box);
+
+        box = new PathBox("Este");
+        panelMatrix[9][9] = box;
+        pathBoxes.put(29, box);
+
+        box = new PathBox("Sureste");
+        panelMatrix[12][9] = box;
+        pathBoxes.put(41, box);
     }
 
-    public JLabel getVidasPlayerTwoLabel() {
-        return label2;
+    public LifePanels getLifePanelsCastleOne() {
+        return life1;
+    }
+
+    public LifePanels getLifePanelsCastleTwo() {
+        return life2;
+    }
+
+    public PathBox getPathBox(int i) {
+        return pathBoxes.get(i);
     }
 
     public void refresh() {
@@ -68,16 +103,16 @@ public class SegundaEvaluacionUI extends JFrame {
         }
     }
 
-    private void initPanels() {
+    private void fillPanels() {
         JPanel panel;
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
+                if (panelMatrix[i][j] != null)
+                    continue;
                 panel = new JPanel();
                 panel.setOpaque(false);
                 panel.setBackground(new Color(0, 0, 0, 0));
                 // panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                panel.setLayout(new GridLayout(0, 1));
-                panel.setVisible(true);
                 panelMatrix[i][j] = panel;
             }
         }
