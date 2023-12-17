@@ -15,6 +15,10 @@ public class Path {
         this.pathBoxes = pathBoxes;
     }
 
+    public boolean hasAnyMonster() {
+        return pathBoxes.stream().anyMatch(pathBox -> pathBox.getMonster() != null);
+    }
+
     public boolean haveMonster(Long playerId) {
         return pathBoxes.stream().anyMatch(
                 pathBox -> pathBox.getMonster() != null && pathBox.getMonster().getPlayer().getId().equals(playerId));
