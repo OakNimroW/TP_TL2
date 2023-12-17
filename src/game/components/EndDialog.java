@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,13 +18,12 @@ import javax.swing.border.EmptyBorder;
 
 import game.engine.GameFont;
 
-public class EndFrame extends JFrame {
-  public EndFrame(String title, String message) {
-    super();
-    this.setTitle(title);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class EndDialog extends JDialog {
+  public EndDialog(JFrame owner, String title, String message) {
+    super(owner, title);
     this.setUndecorated(true);
     this.setResizable(false);
+    this.setModalityType(ModalityType.APPLICATION_MODAL);
 
     JPanel panel = new BackgroundPanel();
     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
