@@ -26,7 +26,8 @@ public class Main {
         List<Monster> monstersTwo = Arrays.asList(
                 // new DeathKnight("Death knight")
                 // new Skeleton("Skeleton"),
-                new EvilBeast("Evil beast")
+                // new EvilBeast("Evil beast"),
+                new Spider("Spider")
                 );
 
         Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();
