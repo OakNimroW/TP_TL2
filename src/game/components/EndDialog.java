@@ -18,7 +18,20 @@ import javax.swing.border.EmptyBorder;
 
 import game.engine.GameFont;
 
+/**
+ * Esta clase representa un diálogo de fin de juego que se muestra en una
+ * ventana emergente.
+ */
 public class EndDialog extends JDialog {
+
+  /**
+   * Crea un nuevo objeto EndDialog con el propietario, el título y el mensaje
+   * especificados.
+   * 
+   * @param owner   el JFrame propietario del diálogo
+   * @param title   el título del diálogo
+   * @param message el mensaje del diálogo
+   */
   public EndDialog(JFrame owner, String title, String message) {
     super(owner, title);
     this.setUndecorated(true);
@@ -55,6 +68,11 @@ public class EndDialog extends JDialog {
     this.setVisible(true);
   }
 
+  /**
+   * Esta clase interna representa un panel de fondo para el diálogo.
+   * Extiende la clase JPanel y proporciona un método para pintar una imagen de
+   * fondo.
+   */
   private class BackgroundPanel extends JPanel {
     private ImageIcon background = new ImageIcon("assets/end_background.png");
 
@@ -72,6 +90,11 @@ public class EndDialog extends JDialog {
     }
   }
 
+  /**
+   * Esta clase interna representa un botón personalizado para el diálogo.
+   * Extiende la clase JButton y proporciona un método para pintar una imagen de
+   * fondo.
+   */
   private class Button extends JButton {
     private ImageIcon background = new ImageIcon("assets/button.png");
 
