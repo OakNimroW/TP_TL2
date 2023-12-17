@@ -29,6 +29,10 @@ public class Player {
 
     }
 
+    public boolean hasMonstersLeft() {
+        return monsterIterator.hasNext();
+    }
+
     public void nextRound() {
         this.castle.nextRound(id, monsterIterator);
     }
