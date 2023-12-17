@@ -16,8 +16,8 @@ public class Monk extends Monster {
     private Attack spellAttack = new Spell();
     private Attack punchAttack = new Punch();
 
-    private final int turnsPerMove = 2;
-    private int turnsSiceLastMove = turnsPerMove;
+    private final int turnsBetweenMoves = 1;
+    private int turnsSiceLastMove = 0;
 
     public Monk(String name) {
         super(name, 600, Arrays.asList(Type.FIGHTER, Type.MYSTIC), new SpriteSheet("monk_0"));
@@ -46,7 +46,7 @@ public class Monk extends Monster {
     @Override
     public void move(PathBox oldPathBox, PathBox newPathBox) {
         /* Moves every two turns */
-        if (turnsPerMove == turnsSiceLastMove) {
+        if (turnsBetweenMoves == turnsSiceLastMove) {
             turnsSiceLastMove = 0;
             super.move(oldPathBox, newPathBox);
         } else {
