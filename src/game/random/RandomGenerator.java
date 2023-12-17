@@ -28,10 +28,6 @@ public class RandomGenerator {
 
     public boolean randomBernoulli(float p) {
         /* p is the probablity that the outcome is true */
-        if (Math.random() < p) {
-            return true;
-        } else {
-            return false;
-        }
+        return Math.random() < p;
     }
 }
