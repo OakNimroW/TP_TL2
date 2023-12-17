@@ -15,7 +15,8 @@ import entregable.ataques.FlameThrower;
  * 
  * Monstruo de tipo BEAST, DEMON y FIRE.
  * 
- * Ataca con lanzallamas si el enemigo es de tipo animal, y con maldiciones caso contrario.
+ * Ataca con lanzallamas si el enemigo es de tipo animal, y con maldiciones caso
+ * contrario.
  */
 public class EvilBeast extends Monster {
 

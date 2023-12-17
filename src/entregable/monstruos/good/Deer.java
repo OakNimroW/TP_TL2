@@ -13,7 +13,8 @@ import game.types.Type;
  * Monstruo de tipo ANIMAL.
  * 
  * Ataca con patadas.
- * Si recibe daño de un monstruo de tipo SWORD, utiliza su cornamenta para reducir el daño a un décimo del original.
+ * Si recibe daño de un monstruo de tipo SWORD, utiliza su cornamenta para
+ * reducir el daño a un décimo del original.
  */
 public class Deer extends Monster {
 

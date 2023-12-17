@@ -37,5 +37,5 @@ public class Vampire extends Monster {
             activeSkill = biteAttack;
         }
     }
-    
+
 }

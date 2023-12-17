@@ -26,5 +26,5 @@ public class Ghost extends Monster {
         animation = spriteSheet.getAttackAnimation();
         enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
     }
-    
+
 }

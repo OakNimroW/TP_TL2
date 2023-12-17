@@ -24,7 +24,7 @@ public class WolfRider extends Monster {
     @Override
     public void attack(Monster enemy) {
         animation = spriteSheet.getAttackAnimation();
-        enemy.onDamageReceive(this.activeSkill.damage(enemy), this);        
+        enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
     }
-    
+
 }

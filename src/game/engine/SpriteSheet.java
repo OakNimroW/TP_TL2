@@ -7,8 +7,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * La clase SpriteSheet representa una hoja de sprites que contiene múltiples imágenes de sprites.
- * Cada imagen de sprite en la hoja de sprites se puede acceder mediante su posición en la cuadrícula.
+ * La clase SpriteSheet representa una hoja de sprites que contiene múltiples
+ * imágenes de sprites.
+ * Cada imagen de sprite en la hoja de sprites se puede acceder mediante su
+ * posición en la cuadrícula.
  */
 public class SpriteSheet {
   private BufferedImage spriteSheet;
@@ -28,10 +30,12 @@ public class SpriteSheet {
   }
 
   /**
-   * Obtiene una fila de imágenes de sprite de la hoja de sprites en la posición de la cuadrícula especificada.
+   * Obtiene una fila de imágenes de sprite de la hoja de sprites en la posición
+   * de la cuadrícula especificada.
    *
    * @param yGrid la posición de la cuadrícula en el eje Y
-   * @return un arreglo de BufferedImage que representa la fila de imágenes de sprite
+   * @return un arreglo de BufferedImage que representa la fila de imágenes de
+   *         sprite
    */
   private BufferedImage[] getRowFromSpriteSheet(int yGrid) {
     BufferedImage[] row = new BufferedImage[spriteSheet.getWidth() / TILE_SIZE];
