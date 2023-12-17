@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class EvilBeast extends Monster {
 
     public EvilBeast(String name) {
-        super(name, 700, Arrays.asList(Type.BEAST, Type.DEMON, Type.FIRE), new SpriteSheet("devil_1"));
+        super(name, 500, Arrays.asList(Type.BEAST, Type.DEMON, Type.FIRE), new SpriteSheet("devil_1"));
         this.activeSkill = new Curse();
     }
 

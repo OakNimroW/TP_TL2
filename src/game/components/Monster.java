@@ -29,7 +29,7 @@ public abstract class Monster {
 
     public abstract void attack(Monster enemy);
 
-    public void onDamageReceive(Integer damage, Monster monster) {
+    public void onDamageReceive(Integer damage, Monster enemy) {
         this.life = this.life - damage;
         if (this.life <= 0) {
             this.life = 0;

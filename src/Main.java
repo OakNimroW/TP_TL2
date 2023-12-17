@@ -16,12 +16,15 @@ public class Main {
         rumbleGame.init();
 
         List<Monster> monstersOne = Arrays.asList(
-                new Deer("Oh deer"));
+                // new Deer("Oh deer"),
+                new Pikeman("Pikeman")
+                );
 
         List<Monster> monstersTwo = Arrays.asList(
                 // new DeathKnight("Death knight")
                 // new Skeleton("Skeleton"),
-                new EvilBeast("Evil beast"));
+                new EvilBeast("Evil beast")
+                );
 
         Ordenador ordenadorOne = new OrdenadorVidaInicioMayor();
         monstersOne = ordenadorOne.ordenar(monstersOne);
