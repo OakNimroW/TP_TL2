@@ -20,7 +20,8 @@ public class Main {
                 // new Deer("Oh deer"),
                 // new Pikeman("Pikeman"),
                 // new SwordsMan("Swordsman"),
-                new WolfRider("WolfRider")
+                // new WolfRider("WolfRider"),
+                new Monk("Monk")
                 );
 
         List<Monster> monstersTwo = Arrays.asList(
