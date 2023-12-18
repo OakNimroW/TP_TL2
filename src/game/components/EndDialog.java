@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import game.engine.GameCursor;
 import game.engine.GameFont;
 
 /**
@@ -79,6 +80,7 @@ public class EndDialog extends JDialog {
     public BackgroundPanel() {
       super();
       this.setOpaque(false);
+      GameCursor.setDefault(this);
     }
 
     @Override
@@ -96,7 +98,7 @@ public class EndDialog extends JDialog {
    * fondo.
    */
   private class Button extends JButton {
-    private ImageIcon background = new ImageIcon("assets/button.png");
+    private ImageIcon background = new ImageIcon("assets/end_button.png");
 
     public Button(String text) {
       this(text, new Insets(10, 20, 10, 20));
@@ -107,6 +109,7 @@ public class EndDialog extends JDialog {
       this.setHorizontalTextPosition(JButton.CENTER);
       this.setFont(GameFont.getRegular().deriveFont(18f));
       this.setFocusable(false);
+      this.setFocusPainted(false);
       this.setContentAreaFilled(false);
       this.setBorder(new EmptyBorder(insets));
     }

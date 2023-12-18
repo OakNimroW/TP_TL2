@@ -50,6 +50,10 @@ public abstract class Monster {
         return life;
     }
 
+    public Integer getMaxLife() {
+        return maxLife;
+    }
+
     public Player getPlayer() {
         return player;
     }
