@@ -11,6 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 import game.engine.GameFont;
 
+/**
+ * Clase que representa un botón personalizado.
+ */
 class Button extends JButton {
   private ImageIcon background = new ImageIcon("assets/selector_button.png");
 

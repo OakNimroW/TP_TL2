@@ -13,6 +13,9 @@ import javax.swing.border.EmptyBorder;
 
 import game.components.Monster;
 
+/**
+ * Botón que representa un monstruo seleccionado.
+ */
 class SelectedMonsterButton extends JButton {
   private final int BUTTON_SIZE = 48;
 

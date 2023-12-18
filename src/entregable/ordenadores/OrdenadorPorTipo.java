@@ -7,13 +7,32 @@ import java.util.List;
 import game.components.Monster;
 import game.types.Type;
 
+/**
+ * Clase que implementa la interfaz Comparator para ordenar objetos de tipo
+ * Monster por tipo.
+ * El orden puede ser ascendente o descendente.
+ */
 public class OrdenadorPorTipo implements Comparator<Monster> {
     private boolean ascendente;
 
+    /**
+     * Constructor de la clase OrdenadorPorTipo.
+     * 
+     * @param ascendente indica si el orden es ascendente (true) o descendente
+     *                   (false).
+     */
     public OrdenadorPorTipo(boolean ascendente) {
         this.ascendente = ascendente;
     }
 
+    /**
+     * Compara dos objetos de tipo Monster por tipo.
+     * 
+     * @param m1 el primer objeto Monster a comparar.
+     * @param m2 el segundo objeto Monster a comparar.
+     * @return un valor negativo si m1 es menor que m2, un valor positivo si m1 es
+     *         mayor que m2, o 0 si son iguales.
+     */
     public int compare(Monster m1, Monster m2) {
         List<Type> t1, t2;
         t1 = new ArrayList<>(m1.getTypes());
