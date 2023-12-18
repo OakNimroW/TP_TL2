@@ -2,19 +2,21 @@ package game.components;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import game.engine.ResourceLoader;
 
 public class LifePanels {
   private final int MAX_LIFES = 3;
   LifePanel[] life = new LifePanel[MAX_LIFES];
 
-  ImageIcon heart = new ImageIcon("assets/heart.png");
-  ImageIcon slot;
+  Image heart = ResourceLoader.loadImage("heart.png");
+  Image slot;
 
   public LifePanels(String slotImageFile) {
-    this.slot = new ImageIcon("assets/" + slotImageFile + "_slot.png");
+    this.slot = ResourceLoader.loadImage(slotImageFile + "_slot.png");
     for (int i = 0; i < MAX_LIFES; i++) {
       life[i] = new LifePanel();
     }
@@ -52,9 +54,9 @@ public class LifePanels {
       int width = this.getWidth();
       int height = this.getHeight();
 
-      g2D.drawImage(slot.getImage(), 0, 0, width, height, null);
+      g2D.drawImage(slot, 0, 0, width, height, null);
       if (showHeart) {
-        g2D.drawImage(heart.getImage(), 0, 0, width, height, null);
+        g2D.drawImage(heart, 0, 0, width, height, null);
       }
     }
   }

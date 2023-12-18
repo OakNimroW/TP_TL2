@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,7 +15,6 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -27,8 +27,7 @@ import entregable.ordenadores.OrdenadorPorTipo;
 import entregable.ordenadores.OrdenadorPorVida;
 import game.components.Monster;
 import game.components.Player;
-import game.engine.GameCursor;
-import game.engine.GameFont;
+import game.engine.ResourceLoader;
 
 public class MonsterSelector extends JDialog {
   private List<SelectedMonsterButton> selectedMonsters = new ArrayList<>();
@@ -50,7 +49,7 @@ public class MonsterSelector extends JDialog {
 
     JLabel titleLabel = new JLabel(title);
     titleLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-    titleLabel.setFont(GameFont.getRegular().deriveFont(24f));
+    titleLabel.setFont(ResourceLoader.getFontRegular().deriveFont(24f));
     titleLabel.setForeground(Color.WHITE);
     panel.add(titleLabel);
 
@@ -162,12 +161,12 @@ public class MonsterSelector extends JDialog {
   }
 
   private class BackgroundPanel extends JPanel {
-    private ImageIcon background = new ImageIcon("assets/selector_background.png");
+    private Image background = ResourceLoader.loadImage("selector_background.png");
 
     public BackgroundPanel() {
       super();
       this.setOpaque(false);
-      GameCursor.setDefault(this);
+      ResourceLoader.setDefaultCursor(this);
     }
 
     @Override
@@ -175,7 +174,7 @@ public class MonsterSelector extends JDialog {
       super.paintComponent(g);
       Graphics2D g2D = (Graphics2D) g;
       g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-      g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+      g2D.drawImage(background, 0, 0, getWidth(), getHeight(), this);
     }
   }
 }

@@ -3,12 +3,12 @@ package game.components;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.RenderingHints;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -16,8 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import game.engine.GameCursor;
-import game.engine.GameFont;
+import game.engine.ResourceLoader;
 
 /**
  * Esta clase representa un diálogo de fin de juego que se muestra en una
@@ -45,14 +44,14 @@ public class EndDialog extends JDialog {
 
     JLabel titleLabel = new JLabel(title);
     titleLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-    titleLabel.setFont(GameFont.getBold().deriveFont(32f));
+    titleLabel.setFont(ResourceLoader.getFontBold().deriveFont(32f));
     panel.add(titleLabel);
 
     panel.add(Box.createVerticalStrut(20));
 
     JLabel messageLabel = new JLabel(message);
     messageLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-    messageLabel.setFont(GameFont.getRegular().deriveFont(20f));
+    messageLabel.setFont(ResourceLoader.getFontRegular().deriveFont(20f));
     panel.add(messageLabel);
 
     panel.add(Box.createVerticalStrut(30));
@@ -75,12 +74,12 @@ public class EndDialog extends JDialog {
    * fondo.
    */
   private class BackgroundPanel extends JPanel {
-    private ImageIcon background = new ImageIcon("assets/end_background.png");
+    private Image background = ResourceLoader.loadImage("end_background.png");
 
     public BackgroundPanel() {
       super();
       this.setOpaque(false);
-      GameCursor.setDefault(this);
+      ResourceLoader.setDefaultCursor(this);
     }
 
     @Override
@@ -88,7 +87,7 @@ public class EndDialog extends JDialog {
       super.paintComponent(g);
       Graphics2D g2D = (Graphics2D) g;
       g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-      g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+      g2D.drawImage(background, 0, 0, getWidth(), getHeight(), this);
     }
   }
 
@@ -98,7 +97,7 @@ public class EndDialog extends JDialog {
    * fondo.
    */
   private class Button extends JButton {
-    private ImageIcon background = new ImageIcon("assets/end_button.png");
+    private Image background = ResourceLoader.loadImage("end_button.png");
 
     public Button(String text) {
       this(text, new Insets(10, 20, 10, 20));
@@ -107,7 +106,7 @@ public class EndDialog extends JDialog {
     public Button(String text, Insets insets) {
       super(text);
       this.setHorizontalTextPosition(JButton.CENTER);
-      this.setFont(GameFont.getRegular().deriveFont(18f));
+      this.setFont(ResourceLoader.getFontRegular().deriveFont(18f));
       this.setFocusable(false);
       this.setFocusPainted(false);
       this.setContentAreaFilled(false);
@@ -118,7 +117,7 @@ public class EndDialog extends JDialog {
     protected void paintComponent(Graphics g) {
       Graphics2D g2D = (Graphics2D) g;
       g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-      g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+      g2D.drawImage(background, 0, 0, getWidth(), getHeight(), this);
       super.paintComponent(g);
     }
   }

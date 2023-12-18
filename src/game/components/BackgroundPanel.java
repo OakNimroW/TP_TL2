@@ -2,16 +2,16 @@ package game.components;
 
 import javax.swing.*;
 
-import game.engine.GameCursor;
+import game.engine.ResourceLoader;
 
 import java.awt.*;
 
 public class BackgroundPanel extends JComponent {
 
-    private ImageIcon background = new ImageIcon("assets/background.png");
+    private Image background = ResourceLoader.loadImage("background.png");
 
     public BackgroundPanel() {
-        GameCursor.setDefault(this);
+        ResourceLoader.setDefaultCursor(this);
     }
 
     @Override
@@ -19,6 +19,6 @@ public class BackgroundPanel extends JComponent {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-        g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
+        g2D.drawImage(background, 0, 0, getWidth(), getHeight(), this);
     }
 }

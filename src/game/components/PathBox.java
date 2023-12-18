@@ -1,6 +1,9 @@
 package game.components;
 
 import javax.swing.*;
+
+import game.engine.ResourceLoader;
+
 import java.awt.*;
 
 public class PathBox extends JPanel {
@@ -9,7 +12,7 @@ public class PathBox extends JPanel {
     private PathBox northBox;
     private String name;
 
-    ImageIcon healthBar = new ImageIcon("assets/bar_03.png");
+    Image healthBar = ResourceLoader.loadImage("bar_03.png");
 
     public PathBox(String name) {
         this.name = name;
@@ -64,7 +67,7 @@ public class PathBox extends JPanel {
                 g2D.setPaint(new Color(231, 123, 123));
             }
             g2D.fillRect(1, 1, ((width - 2) * monster.getLife()) / monster.maxLife, healthBarHeight - 2);
-            g2D.drawImage(healthBar.getImage(), 0, 0, width, healthBarHeight, null);
+            g2D.drawImage(healthBar, 0, 0, width, healthBarHeight, null);
         }
     }
 

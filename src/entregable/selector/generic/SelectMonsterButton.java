@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,12 +16,11 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 import game.components.Monster;
-import game.engine.GameFont;
+import game.engine.ResourceLoader;
 
 public class SelectMonsterButton extends JButton {
   private final int MONSTER_SIZE = 64;
@@ -29,17 +29,17 @@ public class SelectMonsterButton extends JButton {
 
   private int id = 1;
   private String name;
-  private ImageIcon monsterIcon;
+  private Image monsterIcon;
   private MonsterSelector selector;
   private CreateMonsterOperation createMonster;
 
-  private ImageIcon overlay = new ImageIcon("assets/selector_monster_overlay.png");
-  private Font font = GameFont.getRegular().deriveFont(12f);
+  private Image overlay = ResourceLoader.loadImage("selector_monster_overlay.png");
+  private Font font = ResourceLoader.getFontRegular().deriveFont(12f);
 
   public SelectMonsterButton(String name, String iconName, CreateMonsterOperation createMonster) {
     super();
     this.name = name;
-    this.monsterIcon = new ImageIcon("assets/icon_" + iconName + "_32x32.png");
+    this.monsterIcon = ResourceLoader.loadImage("icon_" + iconName + "_32x32.png");
     this.createMonster = createMonster;
     this.setFocusable(false);
     this.setContentAreaFilled(false);
@@ -61,8 +61,8 @@ public class SelectMonsterButton extends JButton {
     g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
 
     offsetLeft = (BUTTON_WIDTH - MONSTER_SIZE) / 2;
-    g2D.drawImage(monsterIcon.getImage(), offsetLeft, 0, MONSTER_SIZE, MONSTER_SIZE, null);
-    g2D.drawImage(overlay.getImage(), offsetLeft, 0, MONSTER_SIZE, MONSTER_SIZE, null);
+    g2D.drawImage(monsterIcon, offsetLeft, 0, MONSTER_SIZE, MONSTER_SIZE, null);
+    g2D.drawImage(overlay, offsetLeft, 0, MONSTER_SIZE, MONSTER_SIZE, null);
 
     AttributedString styledText = new AttributedString(name);
     styledText.addAttribute(TextAttribute.FONT, font);
