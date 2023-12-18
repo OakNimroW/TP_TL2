@@ -1,4 +1,4 @@
-package entregable.selector.good;
+package entregable.selector.generic;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,18 +21,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import entregable.monstruos.good.*;
 import game.components.Player;
 import game.engine.GameCursor;
 import game.engine.GameFont;
-import game.monsters.good.*;
 
 public class MonsterSelector extends JDialog {
   private List<SelectedMonsterButton> selectedMonsters = new ArrayList<>();
   private JPanel selectedPanel;
 
-  public MonsterSelector(JFrame owner, Player player) {
-    super(owner, "Seleccionar monstruos");
+  public MonsterSelector(JFrame owner, Player player, List<SelectMonsterButton> selectMonsterButtons) {
+    super(owner);
+    String title = String.format("Seleccionar monstruos para el jugador %d", player.getId());
+    this.setTitle(title);
     this.setUndecorated(true);
     this.setResizable(false);
     this.setModalityType(ModalityType.APPLICATION_MODAL);
@@ -43,7 +43,7 @@ public class MonsterSelector extends JDialog {
 
     panel.add(Box.createVerticalStrut(20));
 
-    JLabel titleLabel = new JLabel("Seleccionar monstruos");
+    JLabel titleLabel = new JLabel(title);
     titleLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
     titleLabel.setFont(GameFont.getRegular().deriveFont(24f));
     titleLabel.setForeground(Color.WHITE);
@@ -54,18 +54,10 @@ public class MonsterSelector extends JDialog {
     JPanel selectablePanel = new JPanel();
     selectablePanel.setLayout(new FlowLayout());
     selectablePanel.setOpaque(false);
-    selectablePanel
-        .add(new SelectMonsterButton(this, "Bestia de hielo", "ice_elemental_0", name -> new IceBeast(name)));
-    selectablePanel.add(
-        new SelectMonsterButton(this, "Ciervo", "deer_1", name -> new Deer(name)));
-    selectablePanel.add(
-        new SelectMonsterButton(this, "Monje", "monk_0", name -> new Monk(name)));
-    selectablePanel.add(
-        new SelectMonsterButton(this, "Piquero", "pikeman_1", name -> new Pikeman(name)));
-    selectablePanel
-        .add(new SelectMonsterButton(this, "Espadachín", "swordsman_1", name -> new SwordsMan(name)));
-    selectablePanel.add(
-        new SelectMonsterButton(this, "Jinete de lobo", "wolf_rider_0", name -> new WolfRider(name)));
+    selectMonsterButtons.forEach(button -> {
+      button.setSelector(this);
+      selectablePanel.add(button);
+    });
     panel.add(selectablePanel);
 
     panel.add(Box.createVerticalStrut(20));
@@ -89,10 +81,6 @@ public class MonsterSelector extends JDialog {
     continueButton.addMouseListener(new MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent e) {
         super.mouseClicked(e);
-        if (selectedMonsters.size() == 0) {
-          System.out.println("No se han seleccionado monstruos");
-          return;
-        }
         player.setMonsters(selectedMonsters.stream().map(m -> m.getMonster()).toList());
         MonsterSelector.this.dispose();
       }

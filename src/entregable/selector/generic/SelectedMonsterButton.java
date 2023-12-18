@@ -1,4 +1,4 @@
-package entregable.selector.good;
+package entregable.selector.generic;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
