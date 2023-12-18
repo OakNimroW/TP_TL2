@@ -17,7 +17,7 @@ public class Punch implements Hit {
      * @return el daño infligido al enemigo
      */
     @Override
-    public int damage(Monster monster) {
+    public int damage(Monster enemy) {
         return RandomGenerator.getInstance().calculateDamage(50, 250);
     }
 

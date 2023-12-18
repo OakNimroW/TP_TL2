@@ -32,14 +32,14 @@ public class MultiSlice implements Attack {
      * @return el daño infligido al enemigo
      */
     @Override
-    public int damage(Monster monster) {
+    public int damage(Monster enemy) {
         // MultiSlice realiza un ataque de poco daño pero multiples veces
 
         // Num random entre minAttacks y maxAttacks
         int cant_attacks = (int) Math.round(Math.random() * (maxAttacks - minAttacks) + minAttacks);
 
         System.out.println(
-                "MultiSlice: El monstruo '" + monster.toString() + "' recibe " + cant_attacks + " ataques de daño "
+                "MultiSlice: El monstruo '" + enemy.toString() + "' recibe " + cant_attacks + " ataques de daño "
                         + this.basicDamage);
 
         return this.basicDamage * cant_attacks;
