@@ -5,10 +5,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.Box;
@@ -21,6 +22,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import entregable.ordenadores.OrdenadorAlfabetico;
+import entregable.ordenadores.OrdenadorPorTipo;
+import entregable.ordenadores.OrdenadorPorVida;
+import game.components.Monster;
 import game.components.Player;
 import game.engine.GameCursor;
 import game.engine.GameFont;
@@ -74,14 +79,46 @@ public class MonsterSelector extends JDialog {
     JPanel buttonsPanel = new JPanel();
     buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 0));
     buttonsPanel.setOpaque(false);
+    JButton sortButton;
+    sortButton = new Button("Ordenar por nombre");
+    sortButton.addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        super.mouseClicked(e);
+        sortMonsters(new OrdenadorAlfabetico());
+      }
+    });
+    buttonsPanel.add(sortButton);
+    sortButton = new Button("Ordenar por vida");
+    sortButton.addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        super.mouseClicked(e);
+        sortMonsters(new OrdenadorPorVida(true));
+      }
+    });
+    buttonsPanel.add(sortButton);
+    sortButton = new Button("Ordenar por tipo");
+    sortButton.addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        super.mouseClicked(e);
+        sortMonsters(new OrdenadorPorTipo(true));
+      }
+    });
+    buttonsPanel.add(sortButton);
     panel.add(buttonsPanel);
+
+    panel.add(Box.createVerticalStrut(30));
 
     JButton continueButton = new Button("Continuar");
     continueButton.setAlignmentX(JButton.CENTER_ALIGNMENT);
     continueButton.addMouseListener(new MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent e) {
         super.mouseClicked(e);
-        player.setMonsters(selectedMonsters.stream().map(m -> m.getMonster()).toList());
+        List<Monster> monsters = selectedMonsters.stream().map(SelectedMonsterButton::getMonster).toList();
+        player.setMonsters(monsters);
+        int i = 0;
+        for (Monster m : monsters) {
+          System.out.printf("%d: %s\n", ++i, m);
+        }
         MonsterSelector.this.dispose();
       }
     });
@@ -94,6 +131,11 @@ public class MonsterSelector extends JDialog {
     this.setVisible(true);
   }
 
+  void refreshSelected() {
+    selectedPanel.revalidate();
+    selectedPanel.repaint();
+  }
+
   void addSelectedMonster(SelectedMonsterButton selectedMonsterButton) {
     if (selectedMonsters.size() >= 30) {
       System.out.println("No se pueden seleccionar mas de 30 monstruos");
@@ -101,17 +143,22 @@ public class MonsterSelector extends JDialog {
     }
     selectedMonsters.add(selectedMonsterButton);
     selectedPanel.add(selectedMonsterButton);
-    selectedPanel.revalidate();
-    selectedPanel.repaint();
+    this.refreshSelected();
     System.out.println("Se ha seleccionado el monstruo " + selectedMonsterButton.getMonster());
   }
 
   void removeSelectedMonster(SelectedMonsterButton selectedMonsterButton) {
     selectedMonsters.remove(selectedMonsterButton);
     selectedPanel.remove(selectedMonsterButton);
-    selectedPanel.revalidate();
-    selectedPanel.repaint();
+    this.refreshSelected();
     System.out.println("Se ha eliminado el monstruo " + selectedMonsterButton.getMonster());
+  }
+
+  void sortMonsters(Comparator<Monster> comparator) {
+    selectedPanel.removeAll();
+    selectedMonsters.sort((b1, b2) -> comparator.compare(b1.getMonster(), b2.getMonster()));
+    selectedMonsters.forEach(selectedPanel::add);
+    this.refreshSelected();
   }
 
   private class BackgroundPanel extends JPanel {
@@ -129,32 +176,6 @@ public class MonsterSelector extends JDialog {
       Graphics2D g2D = (Graphics2D) g;
       g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
       g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
-    }
-  }
-
-  private class Button extends JButton {
-    private ImageIcon background = new ImageIcon("assets/selector_button.png");
-
-    public Button(String text) {
-      this(text, new Insets(10, 20, 10, 20));
-    }
-
-    public Button(String text, Insets insets) {
-      super(text);
-      this.setHorizontalTextPosition(JButton.CENTER);
-      this.setFont(GameFont.getRegular().deriveFont(18f));
-      this.setForeground(Color.WHITE);
-      this.setFocusable(false);
-      this.setContentAreaFilled(false);
-      this.setBorder(new EmptyBorder(insets));
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-      Graphics2D g2D = (Graphics2D) g;
-      g2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-      g2D.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
-      super.paintComponent(g);
     }
   }
 }
