@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import game.engine.GameCursor;
 import game.engine.GameFont;
 
 public class EndFrame extends JFrame {
@@ -61,6 +62,7 @@ public class EndFrame extends JFrame {
     public BackgroundPanel() {
       super();
       this.setOpaque(false);
+      GameCursor.setDefault(this);
     }
 
     @Override

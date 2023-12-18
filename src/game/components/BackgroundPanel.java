@@ -1,11 +1,18 @@
 package game.components;
 
 import javax.swing.*;
+
+import game.engine.GameCursor;
+
 import java.awt.*;
 
 public class BackgroundPanel extends JComponent {
 
     private ImageIcon background = new ImageIcon("assets/background.png");
+
+    public BackgroundPanel() {
+        GameCursor.setDefault(this);
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
