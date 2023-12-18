@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import entregable.selector.good.MonsterSelector;
 import game.exceptions.NoMonstersException;
 import game.random.RandomGenerator;
 
@@ -94,6 +95,14 @@ public class RumbleGame implements ActionListener {
         castleOne.setLifePanels(segundaEvaluacionUI.getLifePanelsCastleOne());
         castleTwo.setLifePanels(segundaEvaluacionUI.getLifePanelsCastleTwo());
         segundaEvaluacionUI.refresh();
+    }
+
+    public void pickMonsters(Long playerId) {
+        if (playerId == 1L) {
+            new MonsterSelector(segundaEvaluacionUI, playerOne);
+        } else {
+            // TODO: implementar mostruos aleatorios
+        }
     }
 
     public void nextRound() throws NoMonstersException {

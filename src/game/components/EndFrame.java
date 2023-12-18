@@ -75,7 +75,7 @@ public class EndFrame extends JFrame {
   }
 
   private class Button extends JButton {
-    private ImageIcon background = new ImageIcon("assets/button.png");
+    private ImageIcon background = new ImageIcon("assets/end_button.png");
 
     public Button(String text) {
       this(text, new Insets(10, 20, 10, 20));
