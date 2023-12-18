@@ -11,6 +11,13 @@ import game.types.Type;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Bestia de hielo.
+ * 
+ * Monstruo de tipo COLD y BEAST.
+ * 
+ * Alterna ataques entre viento helado y pico de hielo.
+ */
 public class IceBeast extends Monster {
 
     private List<Cold> skills = Arrays.asList(new ColdBreath(), new IceSpike());

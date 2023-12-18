@@ -10,6 +10,14 @@ import java.util.Arrays;
 
 import entregable.ataques.FlameThrower;
 
+/**
+ * Bestia maligna.
+ * 
+ * Monstruo de tipo BEAST, DEMON y FIRE.
+ * 
+ * Ataca con lanzallamas si el enemigo es de tipo animal, y con maldiciones caso
+ * contrario.
+ */
 public class EvilBeast extends Monster {
 
     private Attack curseSkill = new Curse();

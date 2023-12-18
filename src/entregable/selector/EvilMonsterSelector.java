@@ -11,6 +11,9 @@ import entregable.selector.generic.SelectMonsterButton;
 import game.components.Player;
 import game.monsters.evil.*;
 
+/**
+ * Selector de monstruos del equipo malvado.
+ */
 public class EvilMonsterSelector {
   public EvilMonsterSelector(JFrame owner, Player player) {
     List<SelectMonsterButton> monsters = Arrays.<SelectMonsterButton>asList(

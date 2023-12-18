@@ -7,6 +7,15 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Ciervo.
+ * 
+ * Monstruo de tipo ANIMAL.
+ * 
+ * Ataca con patadas.
+ * Si recibe daño de un monstruo de tipo SWORD, utiliza su cornamenta para
+ * reducir el daño a un décimo del original.
+ */
 public class Deer extends Monster {
 
     public Deer(String name) {

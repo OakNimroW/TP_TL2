@@ -7,6 +7,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Fantasma.
+ * 
+ * Monstruo de tipo DEMON y MYSTIC.
+ * 
+ * Ataca con hechizos.
+ */
 public class Ghost extends Monster {
 
     public Ghost(String name) {
@@ -19,5 +26,5 @@ public class Ghost extends Monster {
         animation = spriteSheet.getAttackAnimation();
         enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
     }
-    
+
 }

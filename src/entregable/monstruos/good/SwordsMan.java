@@ -8,6 +8,13 @@ import java.util.Arrays;
 
 import entregable.ataques.MultiSlice;
 
+/**
+ * Espadachín.
+ * 
+ * Monstruo de tipo SWORD y FIGHTER.
+ * 
+ * Ataca con cortes múltiples.
+ */
 public class SwordsMan extends Monster {
 
     public SwordsMan(String name) {

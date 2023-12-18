@@ -7,6 +7,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Jinete de lobo.
+ * 
+ * Monstruo de tipo ANIMAL y MYSTIC.
+ * 
+ * Ataca con mordidas.
+ */
 public class WolfRider extends Monster {
 
     public WolfRider(String name) {
@@ -17,7 +24,7 @@ public class WolfRider extends Monster {
     @Override
     public void attack(Monster enemy) {
         animation = spriteSheet.getAttackAnimation();
-        enemy.onDamageReceive(this.activeSkill.damage(enemy), this);        
+        enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
     }
-    
+
 }

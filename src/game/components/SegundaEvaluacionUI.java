@@ -30,10 +30,6 @@ public class SegundaEvaluacionUI extends JFrame {
         return this;
     }
 
-    public void addPathBox(int x, int y, PathBox pathBox) {
-        panelMatrix[y][x].add(pathBox);
-    }
-
     private void addLifePanels() {
         // "Castle one" no es el castillo del
         // jugador 1, es el castillo al que

@@ -26,12 +26,13 @@ public class RandomGenerator {
         return (int) (Math.random() * (max - min) + min);
     }
 
+    /**
+     * Genera un valor booleano aleatorio según la distribución de Bernoulli.
+     * 
+     * @param p la probabilidad de que el resultado sea verdadero
+     * @return true si el valor aleatorio es menor que p, false de lo contrario
+     */
     public boolean randomBernoulli(float p) {
-        /* p is the probablity that the outcome is true */
-        if (Math.random() < p) {
-            return true;
-        } else {
-            return false;
-        }
+        return Math.random() < p;
     }
 }

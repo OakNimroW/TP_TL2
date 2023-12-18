@@ -30,6 +30,9 @@ import game.components.Player;
 import game.engine.GameCursor;
 import game.engine.GameFont;
 
+/**
+ * Clase que representa un selector de monstruos para ser desplegado al inicio del juego.
+ */
 public class MonsterSelector extends JDialog {
   private List<SelectedMonsterButton> selectedMonsters = new ArrayList<>();
   private JPanel selectedPanel;

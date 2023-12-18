@@ -7,6 +7,13 @@ import game.components.Monster;
 import game.engine.SpriteSheet;
 import game.types.Type;
 
+/**
+ * Araña.
+ * 
+ * Monstruo de tipo ANIMAL y FRAGILE.
+ * 
+ * Ataca con mordidas.
+ */
 public class Spider extends Monster {
 
     public Spider(String name) {
@@ -19,5 +26,5 @@ public class Spider extends Monster {
         animation = spriteSheet.getAttackAnimation();
         enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
     }
-    
+
 }
