@@ -44,10 +44,8 @@ Eliminado Spartan, modificados IceBeast y EvilBeast. Se agregan 10 personajes nu
 Se agregan los siguientes criterios de ordenamiento:
 
 - Alfabéticamente por nombre
-- Por preferencia de tipo de personaje
-- Por cantidad incial de vida ascendente
-- Por cantidad incial de vida descendente
-
+- Por tipo de personaje (ascendente/descendiente)
+- Por vida máxima (ascendente/descendiente)
 
 ### Consigna 3
 
@@ -59,9 +57,9 @@ Cuando alguno del los jugadores gana, se muestra un mensaje mostrando el resutla
 
 Además de las consignas propuestas en el enunciado, se agregaron las siguientes funcionalidades:
 
-* Personajes gráficos y animados.
-* Escenario con distinción entre equipo "bueno" y equipo "malo".
-* Un menú de inicio que permite seleccionar las opciones del equipo.
+- Personajes gráficos y animados.
+- Escenario con distinción entre equipo "bueno" y equipo "malo".
+- Un menú gráfico que permite seleccionar los monstruos de cada equipo.
 
 ## Recursos utilizados
 
