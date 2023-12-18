@@ -9,33 +9,6 @@ import entregable.monstruos.evil.*;
 
 
 public class EvilMonsterSelector {
-
-    // Test getEvilMonsterList(n) function
-    public static void main(String[] args) {
-        /*for (int i = 0; i < 10; i++) {
-            List<Monster> list = getEvilMonsterList(10);
-            System.out.println(list);
-     
-            int d = 0,m = 0,f = 0;
-            for (int j = 0; j < list.size(); j++) {
-                Monster monster = list.get(j);
-                if (monster instanceof EvilBeast || monster instanceof DeathKnight) {
-                    f++;
-                } else if (monster instanceof Vampire || monster instanceof Skeleton) {
-                    m++;
-                } else {
-                    d++;
-                }
-            }
-            System.out.println("Cant: \n\tFuerte: " + f + "\n\tMedio: " + m + "\n\tDebil: " + d + "\n");
-
-        }*/
-
-        Random r = new Random();
-        for (int i = 0; i < 100; i++) {
-            System.out.println((int) (20 + 20 * r.nextGaussian() * 0.1));
-        }
-    }
     
     public static List<Monster> getEvilMonsterList (int n) {
 
