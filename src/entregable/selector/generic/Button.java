@@ -21,6 +21,7 @@ class Button extends JButton {
     this.setForeground(Color.WHITE);
     this.setFocusable(false);
     this.setContentAreaFilled(false);
+    this.setFocusPainted(false);
     this.setBorder(new EmptyBorder(10, 20, 10, 20));
   }
 

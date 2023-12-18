@@ -43,6 +43,7 @@ public class SelectMonsterButton extends JButton {
     this.createMonster = createMonster;
     this.setFocusable(false);
     this.setContentAreaFilled(false);
+    this.setFocusPainted(false);
     this.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
     this.setBorder(new EmptyBorder(0, 0, 0, 0));
     this.addMouseListener(new InnerMouseAdapter());

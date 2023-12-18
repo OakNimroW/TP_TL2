@@ -109,6 +109,7 @@ public class EndDialog extends JDialog {
       this.setHorizontalTextPosition(JButton.CENTER);
       this.setFont(GameFont.getRegular().deriveFont(18f));
       this.setFocusable(false);
+      this.setFocusPainted(false);
       this.setContentAreaFilled(false);
       this.setBorder(new EmptyBorder(insets));
     }
