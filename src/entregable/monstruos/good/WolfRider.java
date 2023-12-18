@@ -17,7 +17,7 @@ import game.types.Type;
 public class WolfRider extends Monster {
 
     public WolfRider(String name) {
-        super(name, 400, Arrays.asList(Type.ANIMAL, Type.MYSTIC), new SpriteSheet("wolf_rider_0"));
+        super(name, 300, Arrays.asList(Type.ANIMAL, Type.MYSTIC), new SpriteSheet("wolf_rider_0"));
         activeSkill = new Bite();
     }
 
