@@ -20,7 +20,7 @@ public class Monk extends Monster {
     private int turnsSiceLastMove = 0;
 
     public Monk(String name) {
-        super(name, 600, Arrays.asList(Type.FIGHTER, Type.MYSTIC), new SpriteSheet("monk_0"));
+        super(name, 500, Arrays.asList(Type.FIGHTER, Type.MYSTIC), new SpriteSheet("monk_0"));
         activeSkill = punchAttack;
     }
 

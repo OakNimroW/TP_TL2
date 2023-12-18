@@ -9,7 +9,7 @@ import game.types.Type;
 
 public class Pikeman extends Monster {
 
-    private final int pike_damage = 80;
+    private final int pike_damage = 60;
 
     public Pikeman(String name) {
         super(name, 400, Arrays.asList(Type.FIGHTER, Type.SWORD, Type.PROTECTED), new SpriteSheet("pikeman_1"));
