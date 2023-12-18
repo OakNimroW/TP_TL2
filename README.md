@@ -1,28 +1,69 @@
-# TP_TL2
+# Taller de Lenguajes II — Segunda Evaluación
 
-Los puntos del código que debe modificarse en el proyecto JAVA están marcados con un comentario etiquetado con TODO.
+[Enunciado](./Trabajo%20final%20-%202023.pdf).
 
-**Todos los grupos deben implementar en sus juegos:**
-- [ ] Agregar 2 nuevos monstruos y sobreescribir, en al menos uno de ellos, los métodos move() y onDamageReceive().
-- [ ] Al menos 5 nuevas habilidades.
-- [ ] Agregar al menos 5 nuevos tipos de monstruos y relacionarlos con los monstruos creados.
+> Autores: Juan Martín Seery, Tomás Badenes y Lorenzo Majoros.
 
-**Para grupos de 2 y 3 integrantes:**
+## Detalles sobre las soluciones
 
-En la versión original, el orden de salida de los monstruos está dado por el orden de la lista: el primero de la lista es el primero en salir a la batalla.
+### Consigna 1
 
-Los grupos de 2 y 3 integrantes deben implementar al menos: 2 criterios de ordenamiento para la lista de monstruos
-1. Por vida (el que más vida tiene sale primero a la batalla)
-2. Por Nombre
-3. Por tipo
+#### Nuevos Monstruos
 
-[-] por ataque (el que más poder de daño tiene sale primero) o por tipo.
+Eliminado Spartan, modificados IceBeast y EvilBeast. Se agregan 10 personajes nuevos y se clasifican en paquetes equipo bueno / equipo malo.
 
-**Para grupos de 3 integrantes:**
+##### Equipo bueno
 
-La versión original finaliza el juego cuando las vidas de uno de los jugadores llegan a cero
-cuando la cantidad de rondas llega a 100.
+- Swordsman
+- IceBeast
+- Monk (Overrides `move()`)
+- Pikeman (Overrides `onDamageReceive()`)
+- Wolfrider
+- Deer (Overrides `onDamageReceive()`)
 
-Los grupos de 3 integrantes deben implementar:
-- [ ] Una excepción en situación de “empate”: la excepción se dispara cuando ambos jugadores no tienen monstruos disponibles para atacar pero ninguno perdió.
-- [ ] Implementar una ventana popup que informe el resultado del juego.
+##### Equipo malo
+
+- Evilbeast
+- DeathKnight
+- Ghost
+- Skeleton
+- Spider
+- Vampire
+
+#### Nuevas habilidades
+
+- Bite
+- FlameThrower
+- Kick
+- MultiSlice
+- Punch
+- Spell
+
+### Consigna 2
+
+Se agregan los siguientes criterios de ordenamiento:
+
+- Alfabéticamente por nombre
+- Por tipo de personaje (ascendente/descendiente)
+- Por vida máxima (ascendente/descendiente)
+
+### Consigna 3
+
+Se agrega la excepción `NoMonsterException` para cuando termina el juego y no hay monstruos en niguno de los equipos ni en el mapa. El manejador de esta excepción lanza el mensaje de empate, que también es mostrado cuando la cantidad de rondas llega a 100 y ninguno de los jugadores ganó.
+
+Cuando alguno del los jugadores gana, se muestra un mensaje mostrando el resutlado de la partida.
+
+### Extras
+
+Además de las consignas propuestas en el enunciado, se agregaron las siguientes funcionalidades:
+
+- Personajes gráficos y animados.
+- Escenario con distinción entre equipo "bueno" y equipo "malo".
+- Un menú gráfico que permite seleccionar los monstruos de cada equipo.
+
+## Recursos utilizados
+
+- Los sprites se basan en aquellos creados por [Aleksandr Makarov](https://iknowkingrabbit.itch.io/) para su _Heroic Asset Series_.
+- La tipografía utilizada es [Nico Fonts](https://emhuo.itch.io/nico-pixel-fonts-pack) creada por `emhuo`.
+- Varios de los conceptos más avanzados de Java Swing se obtuvieron del video de Bro Code [Java GUI: Full Course ☕ (FREE)](https://www.youtube.com/watch?v=Kmgo00avvEw).
+- Para hacer el escenario, se utilizó el editor [Tiled Map Editor](https://www.mapeditor.org/).

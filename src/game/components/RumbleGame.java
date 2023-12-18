@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import entregable.selector.EvilMonsterSelector;
+import entregable.selector.GoodMonsterSelector;
 import game.exceptions.NoMonstersException;
 import game.random.RandomGenerator;
 
@@ -96,6 +98,14 @@ public class RumbleGame implements ActionListener {
         segundaEvaluacionUI.refresh();
     }
 
+    public void pickMonsters(Long playerId) {
+        if (playerId == 1L) {
+            new GoodMonsterSelector(segundaEvaluacionUI, playerOne);
+        } else {
+            new EvilMonsterSelector(segundaEvaluacionUI, playerTwo);
+        }
+    }
+
     public void nextRound() throws NoMonstersException {
         System.out.println();
         System.out.println();
@@ -112,11 +122,11 @@ public class RumbleGame implements ActionListener {
         segundaEvaluacionUI.refresh();
         round++;
         if (playerOne.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Azul!!!         ****");
+            System.out.println("****         Ganador el Jugador 1!!!         ****");
             isPlaying = false;
         }
         if (playerTwo.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Rojo!!!         ****");
+            System.out.println("****         Ganador el Jugador 2!!!         ****");
             isPlaying = false;
         }
         if (isPlaying) {
@@ -156,23 +166,25 @@ public class RumbleGame implements ActionListener {
                 if (!isPlaying) {
                     timer.stop();
 
+                    // "Castle one" no es el castillo del jugador 1,
+                    // es el castillo al que ataca el jugador 1
                     if (playerOne.getCastle().getCastleLife() <= 0) {
                         if (playerTwo.getCastle().getCastleLife() <= 0) {
-                            new EndFrame("Empate", "Ambos jugadores se han quedado sin vidas.");
+                            new EndDialog(segundaEvaluacionUI, "Empate", "Ambos jugadores se han quedado sin vidas.");
                         } else {
-                            new EndFrame("¡Fin del juego!", "¡El jugador 2 ha ganado!");
+                            new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 1 ha ganado!");
                         }
                     } else if (playerTwo.getCastle().getCastleLife() <= 0) {
-                        new EndFrame("¡Fin del juego!", "¡El jugador 1 ha ganado!");
+                        new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 2 ha ganado!");
                     } else {
-                        new EndFrame("Empate", "Se ha llegado a la ronda 100.");
+                        new EndDialog(segundaEvaluacionUI, "Empate", "Se ha llegado a la ronda 100.");
                     }
                 }
             } catch (NoMonstersException e) {
                 timer.stop();
                 System.out.println("****          No hay mas monstruos           ****");
                 isPlaying = false;
-                new EndFrame("Empate", "Ambos jugadores se han quedado sin monstruos.");
+                new EndDialog(segundaEvaluacionUI, "Empate", "Ambos jugadores se han quedado sin monstruos.");
             }
         }
     }
