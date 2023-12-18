@@ -112,11 +112,11 @@ public class RumbleGame implements ActionListener {
         segundaEvaluacionUI.refresh();
         round++;
         if (playerOne.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Azul!!!         ****");
+            System.out.println("****         Ganador el Jugador 1!!!         ****");
             isPlaying = false;
         }
         if (playerTwo.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Rojo!!!         ****");
+            System.out.println("****         Ganador el Jugador 2!!!         ****");
             isPlaying = false;
         }
         if (isPlaying) {
@@ -156,14 +156,16 @@ public class RumbleGame implements ActionListener {
                 if (!isPlaying) {
                     timer.stop();
 
+                    // "Castle one" no es el castillo del jugador 1,
+                    // es el castillo al que ataca el jugador 1
                     if (playerOne.getCastle().getCastleLife() <= 0) {
                         if (playerTwo.getCastle().getCastleLife() <= 0) {
                             new EndDialog(segundaEvaluacionUI, "Empate", "Ambos jugadores se han quedado sin vidas.");
                         } else {
-                            new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 2 ha ganado!");
+                            new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 1 ha ganado!");
                         }
                     } else if (playerTwo.getCastle().getCastleLife() <= 0) {
-                        new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 1 ha ganado!");
+                        new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 2 ha ganado!");
                     } else {
                         new EndDialog(segundaEvaluacionUI, "Empate", "Se ha llegado a la ronda 100.");
                     }
