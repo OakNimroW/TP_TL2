@@ -167,21 +167,21 @@ public class RumbleGame implements ActionListener {
 
                     if (playerOne.getCastle().getCastleLife() <= 0) {
                         if (playerTwo.getCastle().getCastleLife() <= 0) {
-                            new EndFrame("Empate", "Ambos jugadores se han quedado sin vidas.");
+                            new EndDialog(segundaEvaluacionUI, "Empate", "Ambos jugadores se han quedado sin vidas.");
                         } else {
-                            new EndFrame("¡Fin del juego!", "¡El jugador 2 ha ganado!");
+                            new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 2 ha ganado!");
                         }
                     } else if (playerTwo.getCastle().getCastleLife() <= 0) {
-                        new EndFrame("¡Fin del juego!", "¡El jugador 1 ha ganado!");
+                        new EndDialog(segundaEvaluacionUI, "¡Fin del juego!", "¡El jugador 1 ha ganado!");
                     } else {
-                        new EndFrame("Empate", "Se ha llegado a la ronda 100.");
+                        new EndDialog(segundaEvaluacionUI, "Empate", "Se ha llegado a la ronda 100.");
                     }
                 }
             } catch (NoMonstersException e) {
                 timer.stop();
                 System.out.println("****          No hay mas monstruos           ****");
                 isPlaying = false;
-                new EndFrame("Empate", "Ambos jugadores se han quedado sin monstruos.");
+                new EndDialog(segundaEvaluacionUI, "Empate", "Ambos jugadores se han quedado sin monstruos.");
             }
         }
     }

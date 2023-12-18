@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,13 +19,25 @@ import javax.swing.border.EmptyBorder;
 import game.engine.GameCursor;
 import game.engine.GameFont;
 
-public class EndFrame extends JFrame {
-  public EndFrame(String title, String message) {
-    super();
-    this.setTitle(title);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+/**
+ * Esta clase representa un diálogo de fin de juego que se muestra en una
+ * ventana emergente.
+ */
+public class EndDialog extends JDialog {
+
+  /**
+   * Crea un nuevo objeto EndDialog con el propietario, el título y el mensaje
+   * especificados.
+   * 
+   * @param owner   el JFrame propietario del diálogo
+   * @param title   el título del diálogo
+   * @param message el mensaje del diálogo
+   */
+  public EndDialog(JFrame owner, String title, String message) {
+    super(owner, title);
     this.setUndecorated(true);
     this.setResizable(false);
+    this.setModalityType(ModalityType.APPLICATION_MODAL);
 
     JPanel panel = new BackgroundPanel();
     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -56,6 +69,11 @@ public class EndFrame extends JFrame {
     this.setVisible(true);
   }
 
+  /**
+   * Esta clase interna representa un panel de fondo para el diálogo.
+   * Extiende la clase JPanel y proporciona un método para pintar una imagen de
+   * fondo.
+   */
   private class BackgroundPanel extends JPanel {
     private ImageIcon background = new ImageIcon("assets/end_background.png");
 
@@ -74,6 +92,11 @@ public class EndFrame extends JFrame {
     }
   }
 
+  /**
+   * Esta clase interna representa un botón personalizado para el diálogo.
+   * Extiende la clase JButton y proporciona un método para pintar una imagen de
+   * fondo.
+   */
   private class Button extends JButton {
     private ImageIcon background = new ImageIcon("assets/end_button.png");
 
